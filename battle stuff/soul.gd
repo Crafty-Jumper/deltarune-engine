@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var tp: Sprite2D = $Tp
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var BattleManager: Node2D = $".."
+@onready var soul: Sprite2D = $Soul
 
 const SPEED = 25
 var canMove: bool = true
@@ -45,10 +46,10 @@ func update_red() -> void:
 		velocity = direction * SPEED * (1.0 if Input.is_action_pressed("x") else 2.0)
 	else:
 		velocity = Vector2(0,0)
-	modulate = Color.RED
+	soul.self_modulate = Color.RED
 
 func update_blue() -> void:
-	modulate = Color.BLUE
+	soul.self_modulate = Color.BLUE
 	if direction.x:
 		velocity.x = direction.x * SPEED * (1.0 if Input.is_action_pressed("x") else 2.0)
 	else:
@@ -68,13 +69,13 @@ func update_blue() -> void:
 	
 
 func update_green() -> void:
-	modulate = Color.GREEN
+	soul.self_modulate = Color.GREEN
 
 func update_yellow() -> void:
-	modulate = Color.YELLOW
+	soul.self_modulate = Color.YELLOW
 
 func update_purple() -> void:
-	modulate = Color.PURPLE
+	soul.self_modulate = Color.PURPLE
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
