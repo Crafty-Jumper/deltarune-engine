@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4gkblanxc15w"]
+
+[ext_resource type="Script" uid="uid://bffji0bfm0vr8" path="res://battle stuff/battle_manager.gd" id="1_uvmui"]
+[ext_resource type="PackedScene" uid="uid://b72ye1wvvh1vm" path="res://battle stuff/battle_box.tscn" id="2_d6axy"]
+[ext_resource type="PackedScene" uid="uid://cx1bnqf06uifo" path="res://battle stuff/soul.tscn" id="3_ddx0g"]
+[ext_resource type="Texture2D" uid="uid://ccawjjop2md8q" path="res://battle bg/BBS_1.png" id="4_73f4k"]
+[ext_resource type="Script" uid="uid://cw1ibpaqy5k4e" path="res://battle_bg.gd" id="5_bvj5w"]
+[ext_resource type="Texture2D" uid="uid://bh40jx7natsxn" path="res://battle stuff/tp bar/tp_bar_sprite_bg.png" id="6_6j1fe"]
+[ext_resource type="Shader" uid="uid://b8tu3lrsnd1ny" path="res://battle stuff/tp bar/tp_bar_fill.gdshader" id="7_un4mp"]
+[ext_resource type="Texture2D" uid="uid://c0aex5gvjaq03" path="res://battle stuff/tp bar/tp_bar_sprite_mask.png" id="8_eyjyq"]
+[ext_resource type="Texture2D" uid="uid://dftojhsca6i52" path="res://battle stuff/tp bar/tp_icon.png" id="9_50way"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuqvo"]
+resource_local_to_scene = true
+shader = ExtResource("7_un4mp")
+shader_parameter/base_color = Color(1, 0.5294118, 0, 1)
+shader_parameter/max_color = Color(1, 1, 0, 1)
+shader_parameter/change_color = Color(1, 1, 1, 1)
+shader_parameter/foam_amount = 1.0
+shader_parameter/fill = 1.0
+
+[node name="BattleManager" type="Node2D"]
+script = ExtResource("1_uvmui")
+
+[node name="Attack" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="BattleBox" parent="." instance=ExtResource("2_d6axy")]
+visible = false
+scale = Vector2(0.25, 0.25)
+
+[node name="Soul" parent="." instance=ExtResource("3_ddx0g")]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="BattleBG" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = -4095
+texture = ExtResource("4_73f4k")
+script = ExtResource("5_bvj5w")
+
+[node name="BattleBG2" type="Sprite2D" parent="BattleBG"]
+z_index = -4096
+texture = ExtResource("4_73f4k")
+
+[node name="TPBar" type="Sprite2D" parent="."]
+position = Vector2(-135, -50)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_6j1fe")
+
+[node name="TpFill" type="Sprite2D" parent="TPBar"]
+material = SubResource("ShaderMaterial_xuqvo")
+texture = ExtResource("8_eyjyq")
+
+[node name="TpIcon" type="Sprite2D" parent="TPBar"]
+position = Vector2(-32, -46)
+scale = Vector2(2, 2)
+texture = ExtResource("9_50way")
+
+[connection signal="attacking" from="." to="." method="_on_attacking"]
+[connection signal="battleStart" from="." to="." method="_on_battle_start"]
+[connection signal="timeout" from="Attack" to="." method="_on_attack_timeout"]

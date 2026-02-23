@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvhhm1xmui6r6"]
+
+[ext_resource type="PackedScene" uid="uid://c23hbximofv3t" path="res://kris.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dci65i4dx1nmg" path="res://partymem.tscn" id="2_0xm2m"]
+[ext_resource type="FontFile" uid="uid://c1lxdp7v0ox0o" path="res://textbox/8BitOperatorJVE.ttf" id="2_272bh"]
+[ext_resource type="Script" uid="uid://dahx40nysg6ua" path="res://textbox.gd" id="2_kek77"]
+[ext_resource type="AudioStream" uid="uid://c63xgodpgmji2" path="res://textbox/sounds/snd_txtsus.wav" id="3_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dhwdi8xiesi60" path="res://susie.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bufjnv22t3mij" path="res://textbox/lightworld.png" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://b5x6wx85omrgf" path="res://ralsei.png" id="9_kek77"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vw27"]
+load_path = "res://.godot/imported/0.png-10b240e1556ac378b47fbaad9aaa484c.ctex"
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+z_index = 4096
+texture_filter = 1
+position = Vector2(-2, 68)
+texture = ExtResource("5_7mycd")
+script = ExtResource("2_kek77")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/Sprite2D"]
+texture_filter = 1
+offset_left = -72.5
+offset_top = -28.0
+offset_right = 142.5
+offset_bottom = 116.0
+theme_override_constants/line_separation = 2
+theme_override_constants/paragraph_separation = 2
+theme_override_fonts/normal_font = ExtResource("2_272bh")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "* Test Text"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera2D/Sprite2D"]
+stream = ExtResource("3_5vw27")
+max_polyphony = 128
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Sprite2D"]
+position = Vector2(-107, 0)
+texture = SubResource("CompressedTexture2D_5vw27")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(4, 48)
+frameoff = Vector2i(4, 0)
+
+[node name="CharacterBody2D2" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
+leader = NodePath("../CharacterBody2D")
+spritesheet = ExtResource("4_1bvp3")
+frameoff = Vector2i(4, 0)
+spriteoff = Vector2(0, -3)
+
+[node name="CharacterBody2D3" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
+position = Vector2(0, 3)
+leader = NodePath("../CharacterBody2D2")
+spritesheet = ExtResource("9_kek77")
+frameoff = Vector2i(4, 0)
+spriteoff = Vector2(0, -3)

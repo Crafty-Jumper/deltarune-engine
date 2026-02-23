@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cx1bnqf06uifo"]
+
+[ext_resource type="Texture2D" uid="uid://cnitqk4hfxm2m" path="res://battle stuff/soul.png" id="1_61vr4"]
+[ext_resource type="Script" uid="uid://c0a8jhhnhtsjk" path="res://battle stuff/soul.gd" id="1_mrxcm"]
+[ext_resource type="Texture2D" uid="uid://cs4sixynv63co" path="res://battle stuff/tp.png" id="3_a1pjq"]
+[ext_resource type="AudioStream" uid="uid://ds6etnkqvx4w5" path="res://battle stuff/snd_graze.wav" id="3_vs6sy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrxcm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvxrt"]
+size = Vector2(50, 50)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_mrxcm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mrxcm")
+
+[node name="Soul" type="Sprite2D" parent="."]
+texture = ExtResource("1_61vr4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_hvxrt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vs6sy")
+
+[node name="Tp" type="Sprite2D" parent="."]
+texture = ExtResource("3_a1pjq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

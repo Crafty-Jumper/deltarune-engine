@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b72ye1wvvh1vm"]
+
+[ext_resource type="Texture2D" uid="uid://bxarim4eg320m" path="res://battle stuff/BBS_0018.png" id="1_beqel"]
+[ext_resource type="Script" uid="uid://cdlcn5k5e7clx" path="res://battle stuff/battle_box.gd" id="1_vow0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beqel"]
+size = Vector2(8, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vow0r"]
+size = Vector2(300, 8)
+
+[node name="RigidBody2D" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_vow0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -256
+texture_filter = 1
+texture = ExtResource("1_beqel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(146, 0)
+shape = SubResource("RectangleShape2D_beqel")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-146, 0)
+shape = SubResource("RectangleShape2D_beqel")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 146)
+shape = SubResource("RectangleShape2D_vow0r")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -146)
+shape = SubResource("RectangleShape2D_vow0r")

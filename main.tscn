@@ -1,0 +1,201 @@
+[gd_scene load_steps=31 format=3 uid="uid://bvhhm1xmui6r6"]
+
+[ext_resource type="Texture2D" uid="uid://df61rlytn8uxa" path="res://retray.png" id="1_efxa6"]
+[ext_resource type="PackedScene" uid="uid://c23hbximofv3t" path="res://kris.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://b3nr7e7fpbjwr" path="res://main.gd" id="1_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dci65i4dx1nmg" path="res://partymem.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bffji0bfm0vr8" path="res://battle stuff/battle_manager.gd" id="2_1u8w0"]
+[ext_resource type="Script" uid="uid://dahx40nysg6ua" path="res://textbox.gd" id="2_kek77"]
+[ext_resource type="Texture2D" uid="uid://cgmkbg7aetonk" path="res://reference.jpg" id="2_vivmo"]
+[ext_resource type="Texture2D" uid="uid://ccawjjop2md8q" path="res://battle bg/BBS_1.png" id="2_yaehf"]
+[ext_resource type="AudioStream" uid="uid://c63xgodpgmji2" path="res://textbox/sounds/snd_txtsus.wav" id="3_5vw27"]
+[ext_resource type="Script" uid="uid://cw1ibpaqy5k4e" path="res://battle_bg.gd" id="3_074og"]
+[ext_resource type="FontFile" uid="uid://cjloxrsvbqe82" path="res://textbox/8bitoperator JVE.ttf" id="3_kek77"]
+[ext_resource type="Texture2D" uid="uid://dhwdi8xiesi60" path="res://susie.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://g6wuv3vbgf4i" path="res://darkworldtext.gd" id="4_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bufjnv22t3mij" path="res://textbox/lightworld.png" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://b46loo7yumfoq" path="res://textbox/ralsei/0.png" id="5_kek77"]
+[ext_resource type="Texture2D" uid="uid://bh40jx7natsxn" path="res://battle stuff/tp bar/tp_bar_sprite_bg.png" id="8_1u8w0"]
+[ext_resource type="AudioStream" uid="uid://s0giemp0l6wq" path="res://music/mus_hazeofgold.wav" id="8_dg77c"]
+[ext_resource type="Shader" uid="uid://b8tu3lrsnd1ny" path="res://battle stuff/tp bar/tp_bar_fill.gdshader" id="9_0odxb"]
+[ext_resource type="Texture2D" uid="uid://b5x6wx85omrgf" path="res://ralsei.png" id="9_kek77"]
+[ext_resource type="Texture2D" uid="uid://c0aex5gvjaq03" path="res://battle stuff/tp bar/tp_bar_sprite_mask.png" id="10_lswn8"]
+[ext_resource type="Texture2D" uid="uid://dftojhsca6i52" path="res://battle stuff/tp bar/tp_icon.png" id="11_a6jrf"]
+[ext_resource type="Texture2D" uid="uid://bv0h7juhhqnsq" path="res://music/image (11).png" id="14_074og"]
+[ext_resource type="PackedScene" uid="uid://cx1bnqf06uifo" path="res://battle stuff/soul.tscn" id="19_cegan"]
+[ext_resource type="PackedScene" uid="uid://b72ye1wvvh1vm" path="res://battle stuff/battle_box.tscn" id="20_82xsv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
+resource_local_to_scene = true
+shader = ExtResource("9_0odxb")
+shader_parameter/base_color = Color(1, 0.5294118, 0, 1)
+shader_parameter/max_color = Color(1, 1, 0, 1)
+shader_parameter/change_color = Color(1, 1, 1, 1)
+shader_parameter/foam_amount = 1.0
+shader_parameter/fill = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dg77c"]
+texture = ExtResource("1_efxa6")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ycdy4"]
+sources/0 = SubResource("TileSetAtlasSource_dg77c")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_4c57u"]
+script = ExtResource("4_4c57u")
+metadata/_custom_type_script = "uid://g6wuv3vbgf4i"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kek77"]
+streams_count = 10
+stream_0/stream = ExtResource("3_5vw27")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vw27"]
+load_path = "res://.godot/imported/0.png-10b240e1556ac378b47fbaad9aaa484c.ctex"
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("1_ycdy4")
+
+[node name="BattleManager" type="Node2D" parent="."]
+script = ExtResource("2_1u8w0")
+
+[node name="Attack" type="Timer" parent="BattleManager"]
+wait_time = 10.0
+one_shot = true
+
+[node name="BattleBox" parent="BattleManager" instance=ExtResource("20_82xsv")]
+visible = false
+scale = Vector2(0.25, 0.25)
+
+[node name="Soul" parent="BattleManager" instance=ExtResource("19_cegan")]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="BattleBG" type="Sprite2D" parent="BattleManager"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = -4095
+texture = ExtResource("2_yaehf")
+script = ExtResource("3_074og")
+
+[node name="BattleBG2" type="Sprite2D" parent="BattleManager/BattleBG"]
+z_index = -4096
+texture = ExtResource("2_yaehf")
+
+[node name="TPBar" type="Sprite2D" parent="BattleManager"]
+position = Vector2(-135, -50)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_1u8w0")
+
+[node name="TpFill" type="Sprite2D" parent="BattleManager/TPBar"]
+material = SubResource("ShaderMaterial_d13ii")
+texture = ExtResource("10_lswn8")
+
+[node name="TpIcon" type="Sprite2D" parent="BattleManager/TPBar"]
+position = Vector2(-32, -46)
+scale = Vector2(2, 2)
+texture = ExtResource("11_a6jrf")
+
+[node name="Reference" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.27058825)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_vivmo")
+
+[node name="Background" type="TileMapLayer" parent="."]
+z_index = -4096
+tile_set = SubResource("TileSet_ycdy4")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Textbox" type="Sprite2D" parent="Camera"]
+visible = false
+z_index = 4096
+texture_filter = 1
+position = Vector2(-2, 68)
+texture = ExtResource("5_7mycd")
+script = ExtResource("2_kek77")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera/Textbox"]
+texture_filter = 1
+offset_left = -72.5
+offset_top = -28.0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_constants/line_separation = 2
+theme_override_constants/paragraph_separation = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/normal_font = ExtResource("3_kek77")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "* Line 1
+* Line 2
+* Line 3"
+scroll_active = false
+custom_effects = [SubResource("RichTextEffect_4c57u")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera/Textbox"]
+stream = SubResource("AudioStreamRandomizer_kek77")
+max_polyphony = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera/Textbox"]
+position = Vector2(-107, 0)
+texture = SubResource("CompressedTexture2D_5vw27")
+
+[node name="Subplot" type="Sprite2D" parent="Camera/Textbox"]
+position = Vector2(56, 19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_kek77")
+
+[node name="Subtext" type="RichTextLabel" parent="Camera/Textbox/Subplot"]
+offset_left = 28.0
+offset_top = -26.0
+offset_right = 170.0
+offset_bottom = 26.0
+theme_override_fonts/normal_font = ExtResource("3_kek77")
+theme_override_font_sizes/normal_font_size = 16
+text = "Th-Thanks Susie!"
+
+[node name="Music" type="AudioStreamPlayer" parent="Camera"]
+stream = ExtResource("8_dg77c")
+volume_db = -6.0
+
+[node name="Image(11)" type="Sprite2D" parent="Camera"]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_074og")
+
+[node name="SCARF" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
+position = Vector2(-104, 20)
+leader = NodePath("../AX")
+spritesheet = ExtResource("9_kek77")
+frameoff = Vector2i(4, 0)
+spriteoff = Vector2(0, -3)
+
+[node name="AX" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
+position = Vector2(-104, -24.5)
+leader = NodePath("../SWORD")
+spritesheet = ExtResource("4_1bvp3")
+frameoff = Vector2i(4, 0)
+spriteoff = Vector2(0, -3)
+
+[node name="SWORD" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(-104, -69)
+frameoff = Vector2i(4, 0)
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="battle" from="." to="." method="_on_battle"]
+[connection signal="battle" from="." to="BattleManager" method="_on_node_2d_battle"]
+[connection signal="attacking" from="BattleManager" to="BattleManager" method="_on_attacking"]
+[connection signal="battleStart" from="BattleManager" to="BattleManager" method="_on_battle_start"]
+[connection signal="timeout" from="BattleManager/Attack" to="BattleManager" method="_on_attack_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="BattleManager" method="_on_timer_timeout"]

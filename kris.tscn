@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c23hbximofv3t"]
+
+[ext_resource type="Script" uid="uid://dghtmu8d3ke7o" path="res://kris.gd" id="1_pg4el"]
+[ext_resource type="Texture2D" uid="uid://73002twbewuj" path="res://kris.png" id="2_rvgui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_pg4el")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+texture = ExtResource("2_rvgui")
+hframes = 8
+vframes = 4

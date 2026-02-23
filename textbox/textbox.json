@@ -1,0 +1,20 @@
+[
+	{
+		"speakers":["susie","susie","ralsei","ralsei","susie","susie","","susie","ralsei","ralsei"],
+		"faces":[17,24,0,2,1,22,0,32,3,2],
+		"talksounds":["tv_voice_short","txtsus","txtral","txtral","","txtsus","text","","txtral","txtral"],
+		"dark":true,
+		"texts":[
+			"* This is the textbox guide./\n* You can put multiple input\n  checks!/",
+			"* There's even different\n  ^YCOLORS^W!/",
+			"* If you don't have a slash\n  at the end.______.______.______/",
+			"* You can add ^LSUB-TEXTS^W!",
+			"Like this!",
+			"* ^SYou can even shake the text!/\n^s* And stop it!/",
+			"(No matter what you try,___ these\neffects don't work on sub-texts.)",
+			"WHAT DO YOU\n^RMEAN??",
+			"* ^OUNDERSCORES^W are treated as\n  pauses,___ and don't get\n  placed in the ^MTEXT^W./",
+			"* S___o___ ___I___ ___c___o___u___l___d___ ___s___p___e___a___k___ ___r___e___a___l___l___y___\n  ___s___l___o___w___l___y___!/"
+		]
+	}
+]
