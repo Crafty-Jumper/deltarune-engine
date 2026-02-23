@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx1bnqf06uifo"]
+[gd_scene load_steps=8 format=3 uid="uid://cx1bnqf06uifo"]
 
 [ext_resource type="Texture2D" uid="uid://cnitqk4hfxm2m" path="res://battle stuff/soul.png" id="1_61vr4"]
 [ext_resource type="Script" uid="uid://c0a8jhhnhtsjk" path="res://battle stuff/soul.gd" id="1_mrxcm"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvxrt"]
 size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs6sy"]
+size = Vector2(50, 2)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
@@ -36,5 +39,21 @@ stream = ExtResource("3_vs6sy")
 texture = ExtResource("3_a1pjq")
 
 [node name="GreenShield" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GreenShield"]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = -23.0
+color = Color(0, 0.46666667, 1, 1)
+
+[node name="Area2D" type="Area2D" parent="GreenShield"]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GreenShield/Area2D"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_vs6sy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="GreenShield/Area2D" to="." method="_on_shield_body_entered"]
