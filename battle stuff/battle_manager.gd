@@ -24,7 +24,9 @@ func _process(_delta: float) -> void:
 	tpFillAmnt = tension/100.0
 	tp_fill.material.set_shader_parameter("fill", tension/100.0)
 	if not battle:
+		tp_bar.hide()
 		return
+	tp_bar.show()
 	
 	tension = clamp(tension,0.0,100.0)
 	

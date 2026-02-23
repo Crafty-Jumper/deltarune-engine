@@ -35,4 +35,6 @@ stream = ExtResource("3_vs6sy")
 [node name="Tp" type="Sprite2D" parent="."]
 texture = ExtResource("3_a1pjq")
 
+[node name="GreenShield" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

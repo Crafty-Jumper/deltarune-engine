@@ -69,6 +69,10 @@ func update_blue() -> void:
 	
 
 func update_green() -> void:
+	velocity = Vector2.ZERO
+	
+	
+	
 	soul.self_modulate = Color.GREEN
 
 func update_yellow() -> void:
