@@ -2,14 +2,6 @@ extends StaticBody2D
 
 var tween
 
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func animate_in() -> void:
 	scale = Vector2.ZERO
 	rotation_degrees = -180

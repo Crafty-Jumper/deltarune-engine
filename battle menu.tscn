@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bi2pftdvffsni"]
 
-[ext_resource type="Texture2D" uid="uid://bv0h7juhhqnsq" path="res://music/image (11).png" id="1_6m4f2"]
+[ext_resource type="Texture2D" uid="uid://bv0h7juhhqnsq" path="res://image (11).png" id="1_6m4f2"]
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1

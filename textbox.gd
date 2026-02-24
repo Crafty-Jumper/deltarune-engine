@@ -9,7 +9,7 @@ var textboxSet: Array = []
 @onready var sprite_2d: Sprite2D = $Sprite2D
 var waitForInp: bool = true
 var frameCounter:int = 0
-var textboxId: int = 0
+var textboxId: int = 2
 @onready var subplot: Sprite2D = $Subplot
 @onready var subtext: RichTextLabel = $Subplot/Subtext
 var subplotTween
@@ -23,7 +23,7 @@ const audibleLetters:Array[String] = [
 ]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	#if Input.is_action_just_pressed("c"):
 	#	get_textbox(textboxId)
@@ -80,53 +80,53 @@ func addLetter():
 	if fmod(frameCounter,2) == 0:
 		return
 	
-	var char = remainMsg.substr(0,1)
-	if char == "\n":
+	var character = remainMsg.substr(0,1)
+	if character == "\n":
 		for i in remainMsg:
-			rich_text_label.text += char
+			rich_text_label.text += character
 			remainMsg = remainMsg.erase(0)
-			char = remainMsg.substr(0,1)
-			if char != " ":
+			character = remainMsg.substr(0,1)
+			if character != " ":
 				break
 			
 	
-	if char == "^":
+	if character == "^":
 		remainMsg = remainMsg.erase(0)
-		char = remainMsg.substr(0,1)
+		character = remainMsg.substr(0,1)
 		remainMsg = remainMsg.erase(0)
-		if char == "Y":
+		if character == "Y":
 			rich_text_label.text += "[color=ff0]"
-		if char == "G":
+		if character == "G":
 			rich_text_label.text += "[color=0f0]"
-		if char == "R":
+		if character == "R":
 			rich_text_label.text += "[color=f00]"
-		if char == "O":
+		if character == "O":
 			rich_text_label.text += "[color=f70]"
-		if char == "B":
+		if character == "B":
 			rich_text_label.text += "[color=00f]"
-		if char == "P":
+		if character == "P":
 			rich_text_label.text += "[color=70f]"
-		if char == "M":
+		if character == "M":
 			rich_text_label.text += "[color=f0f]"
-		if char == "W":
+		if character == "W":
 			rich_text_label.text += "[/color]"
-		if char == "S":
+		if character == "S":
 			rich_text_label.text += "[shake connected=1]"
-		if char == "s":
+		if character == "s":
 			rich_text_label.text += "[/shake]"
-		if char == "L":
+		if character == "L":
 			rich_text_label.text += "[color=7f0]"
-		char = remainMsg.substr(0,1)
-	if  char == "/":
+		character = remainMsg.substr(0,1)
+	if  character == "/":
 		waitForInp = true
 		remainMsg = remainMsg.erase(0)
 		return
-	if char == "_":
+	if character == "_":
 		remainMsg = remainMsg.erase(0)
 		return
-	rich_text_label.text += char
+	rich_text_label.text += character
 	remainMsg = remainMsg.erase(0)
-	if audibleLetters.has(char):
+	if audibleLetters.has(character):
 		var path = "res://textbox/sounds/snd_" + textbox[textboxId]["talksounds"][msgIdx] + ".wav"
 		if FileAccess.file_exists(path):
 			audio_stream_player.stream.set_stream(0,load(path))

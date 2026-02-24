@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bvhhm1xmui6r6"]
+[gd_scene load_steps=28 format=3 uid="uid://bvhhm1xmui6r6"]
 
 [ext_resource type="PackedScene" uid="uid://c23hbximofv3t" path="res://kris.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b3nr7e7fpbjwr" path="res://main.gd" id="1_ycdy4"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b5x6wx85omrgf" path="res://ralsei.png" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://c0aex5gvjaq03" path="res://battle stuff/tp bar/tp_bar_sprite_mask.png" id="10_lswn8"]
 [ext_resource type="Texture2D" uid="uid://dftojhsca6i52" path="res://battle stuff/tp bar/tp_icon.png" id="11_a6jrf"]
-[ext_resource type="Texture2D" uid="uid://bv0h7juhhqnsq" path="res://music/image (11).png" id="14_074og"]
+[ext_resource type="Texture2D" uid="uid://bv0h7juhhqnsq" path="res://image (11).png" id="14_074og"]
 [ext_resource type="AudioStream" uid="uid://bknhgmlh4q0y" path="res://music/battle.ogg" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://cx1bnqf06uifo" path="res://battle stuff/soul.tscn" id="19_cegan"]
 [ext_resource type="PackedScene" uid="uid://b72ye1wvvh1vm" path="res://battle stuff/battle_box.tscn" id="20_82xsv"]
@@ -32,18 +32,7 @@ shader_parameter/change_color = Color(1, 1, 1, 1)
 shader_parameter/foam_amount = 1.0
 shader_parameter/fill = 1.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d13ii"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1u8w0"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dg77c"]
-texture = SubResource("CompressedTexture2D_1u8w0")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_ycdy4"]
-sources/0 = SubResource("TileSetAtlasSource_dg77c")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_4c57u"]
 script = ExtResource("4_4c57u")
@@ -88,6 +77,7 @@ z_index = -4096
 texture = ExtResource("2_yaehf")
 
 [node name="TPBar" type="Sprite2D" parent="BattleManager"]
+visible = false
 position = Vector2(-188, -50)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_1u8w0")
@@ -100,12 +90,6 @@ texture = ExtResource("10_lswn8")
 position = Vector2(-32, -46)
 scale = Vector2(2, 2)
 texture = ExtResource("11_a6jrf")
-
-[node name="Reference" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.27058825)
-scale = Vector2(0.25, 0.25)
-texture = SubResource("CompressedTexture2D_d13ii")
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -4096
@@ -172,21 +156,20 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_074og")
 
 [node name="SCARF" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
-position = Vector2(-104, 20)
+position = Vector2(-194, -44)
 leader = NodePath("../AX")
 spritesheet = ExtResource("9_kek77")
 frameoff = Vector2i(4, 0)
 spriteoff = Vector2(0, -3)
 
 [node name="AX" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
-position = Vector2(-104, -24.5)
+position = Vector2(-108, 71)
 leader = NodePath("../SWORD")
 spritesheet = ExtResource("4_1bvp3")
 frameoff = Vector2i(4, 0)
 spriteoff = Vector2(0, -3)
 
 [node name="SWORD" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(-104, -69)
 frameoff = Vector2i(4, 0)
 
 [node name="SoundEffects" type="AudioStreamPlayer" parent="."]
@@ -196,6 +179,7 @@ one_shot = true
 
 [connection signal="battle" from="." to="." method="_on_battle"]
 [connection signal="battle" from="." to="BattleManager" method="_on_node_2d_battle"]
+[connection signal="battle" from="." to="SWORD" method="_on_battle_triggered"]
 [connection signal="attacking" from="BattleManager" to="BattleManager" method="_on_attacking"]
 [connection signal="battleStart" from="BattleManager" to="BattleManager" method="_on_battle_start"]
 [connection signal="timeout" from="BattleManager/Attack" to="BattleManager" method="_on_attack_timeout"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c23hbximofv3t"]
+[gd_scene load_steps=5 format=3 uid="uid://c23hbximofv3t"]
 
 [ext_resource type="Script" uid="uid://dghtmu8d3ke7o" path="res://kris.gd" id="1_pg4el"]
 [ext_resource type="Texture2D" uid="uid://73002twbewuj" path="res://kris.png" id="2_rvgui"]
+[ext_resource type="Texture2D" uid="uid://bvq7dmtihjwcl" path="res://battle stuff/battle sprites/kris/pain.png" id="3_rvgui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
 collision_mask = 0
 script = ExtResource("1_pg4el")
 
@@ -18,3 +20,11 @@ position = Vector2(0, -8)
 texture = ExtResource("2_rvgui")
 hframes = 8
 vframes = 4
+frame = 20
+
+[node name="BattleSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(5, -9)
+texture = ExtResource("3_rvgui")
+hframes = 2
+frame = 1

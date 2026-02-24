@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@onready var sprite: Sprite2D = $Sprite2D
 @onready var tp: Sprite2D = $Tp
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var BattleManager: Node2D = $".."
@@ -17,7 +16,7 @@ var jumpFrames = 20
 const jumpFrameCount = 20
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if tp.modulate.a > 0:
 		tp.modulate.a -= 0.05
 	

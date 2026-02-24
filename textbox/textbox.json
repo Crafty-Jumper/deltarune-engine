@@ -16,5 +16,19 @@
 			"* ^OUNDERSCORES^W are treated as\n  pauses,___ and don't get\n  placed in the ^MTEXT^W./",
 			"* S___o___ ___I___ ___c___o___u___l___d___ ___s___p___e___a___k___ ___r___e___a___l___l___y___\n  ___s___l___o___w___l___y___!/"
 		]
+	},
+	{
+		"speakers":["sans"],
+		"faces":[0],
+		"talksounds":["splat"],
+		"dark":false,
+		"texts":["Y___o___u___'___d___ ___b___e___ ___d___e___a___d___ ___w___h___e___r___e___ ___y___o___u___ ___s___t___a___n___d___./"]
+	},
+	{
+		"speakers":["sans","sans","sans","sans"],
+		"faces":[0,0,0,0],
+		"talksounds":["text","text","text","text"],
+		"dark":false,
+		"texts":["Hey, Kris!______ It's me,___ Gaster./","The one who asked you to open the\nfountain./","Thanks again for opening the fountain./","The dark fountain./"]
 	}
 ]

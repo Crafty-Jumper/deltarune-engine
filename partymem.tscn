@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dci65i4dx1nmg"]
+[gd_scene load_steps=5 format=3 uid="uid://dci65i4dx1nmg"]
 
 [ext_resource type="Script" uid="uid://i2j4vhf1hsj" path="res://partymem.gd" id="1_t5xvu"]
 [ext_resource type="Texture2D" uid="uid://73002twbewuj" path="res://kris.png" id="2_7dtra"]
+[ext_resource type="Texture2D" uid="uid://drhnureywoue3" path="res://battle stuff/battle sprites/kris/end.png" id="3_6epsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 
@@ -18,3 +19,9 @@ position = Vector2(0, -8)
 texture = ExtResource("2_7dtra")
 hframes = 8
 vframes = 4
+
+[node name="BattleSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(5, -9)
+texture = ExtResource("3_6epsa")
+hframes = 9
