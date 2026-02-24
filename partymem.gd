@@ -121,7 +121,7 @@ func handle_battle_sprites(animation:String="idle") -> void:
 		if timing <= 0:
 			frame += 1
 			timing = 5
-		if frame == attackFrames:
+		if frame == attackFrames + 5:
 			currAnim = "idle"
 		battle_sprite.offset = attackOff
 	if animation == "prep":

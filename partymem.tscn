@@ -1,27 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dci65i4dx1nmg"]
+[gd_scene format=3 uid="uid://dci65i4dx1nmg"]
 
 [ext_resource type="Script" uid="uid://i2j4vhf1hsj" path="res://partymem.gd" id="1_t5xvu"]
-[ext_resource type="Texture2D" uid="uid://73002twbewuj" path="res://kris.png" id="2_7dtra"]
-[ext_resource type="Texture2D" uid="uid://drhnureywoue3" path="res://battle stuff/battle sprites/kris/end.png" id="3_6epsa"]
+[ext_resource type="Texture2D" uid="uid://dhwdi8xiesi60" path="res://susie.png" id="2_6epsa"]
+[ext_resource type="Texture2D" uid="uid://dbpfyp8pordv4" path="res://battle stuff/battle sprites/susie/prepare.png" id="3_6epsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1870713947]
+texture_filter = 1
 collision_mask = 0
 script = ExtResource("1_t5xvu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1046410385]
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1070426311]
 texture_filter = 1
-position = Vector2(0, -8)
-texture = ExtResource("2_7dtra")
+position = Vector2(0, -12)
+texture = ExtResource("2_6epsa")
 hframes = 8
 vframes = 4
 
-[node name="BattleSprite" type="Sprite2D" parent="."]
+[node name="BattleSprite" type="Sprite2D" parent="." unique_id=751408707]
 visible = false
 position = Vector2(5, -9)
 texture = ExtResource("3_6epsa")
-hframes = 9
+offset = Vector2(7.5, -13.5)

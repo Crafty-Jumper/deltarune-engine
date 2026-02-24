@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvhhm1xmui6r6"]
+[gd_scene format=3 uid="uid://bvhhm1xmui6r6"]
 
 [ext_resource type="PackedScene" uid="uid://c23hbximofv3t" path="res://kris.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b3nr7e7fpbjwr" path="res://main.gd" id="1_ycdy4"]
@@ -22,6 +22,14 @@
 [ext_resource type="AudioStream" uid="uid://bknhgmlh4q0y" path="res://music/battle.ogg" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://cx1bnqf06uifo" path="res://battle stuff/soul.tscn" id="19_cegan"]
 [ext_resource type="PackedScene" uid="uid://b72ye1wvvh1vm" path="res://battle stuff/battle_box.tscn" id="20_82xsv"]
+[ext_resource type="Texture2D" uid="uid://hqodey4tnmo1" path="res://battle stuff/battle sprites/susie/idle.png" id="22_d13ii"]
+[ext_resource type="Texture2D" uid="uid://coy7cp0lbgxlb" path="res://battle stuff/battle sprites/susie/attack.png" id="23_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://yu71p0dugk4f" path="res://battle stuff/battle sprites/susie/defend.png" id="24_0odxb"]
+[ext_resource type="Texture2D" uid="uid://dbpfyp8pordv4" path="res://battle stuff/battle sprites/susie/prepare.png" id="25_a6jrf"]
+[ext_resource type="Texture2D" uid="uid://dfcpp0avctpdg" path="res://battle stuff/battle sprites/susie/item.png" id="25_kq58d"]
+[ext_resource type="Texture2D" uid="uid://cd87c1ergxqrd" path="res://battle stuff/battle sprites/susie/pain.png" id="25_lswn8"]
+[ext_resource type="Texture2D" uid="uid://ckekb36repdxn" path="res://battle stuff/battle sprites/susie/act.png" id="25_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://blaoa7xmoans2" path="res://battle stuff/battle sprites/susie/end.png" id="26_seu75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
 resource_local_to_scene = true
@@ -45,60 +53,60 @@ stream_0/stream = ExtResource("3_5vw27")
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vw27"]
 load_path = "res://.godot/imported/0.png-10b240e1556ac378b47fbaad9aaa484c.ctex"
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=257948741]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_ycdy4")
 
-[node name="BattleManager" type="Node2D" parent="."]
+[node name="BattleManager" type="Node2D" parent="." unique_id=2076857307]
 script = ExtResource("2_1u8w0")
 
-[node name="Attack" type="Timer" parent="BattleManager"]
+[node name="Attack" type="Timer" parent="BattleManager" unique_id=1447743695]
 wait_time = 10.0
 one_shot = true
 
-[node name="BattleBox" parent="BattleManager" instance=ExtResource("20_82xsv")]
+[node name="BattleBox" parent="BattleManager" unique_id=141355792 instance=ExtResource("20_82xsv")]
 visible = false
 scale = Vector2(0.25, 0.25)
 
-[node name="Soul" parent="BattleManager" instance=ExtResource("19_cegan")]
+[node name="Soul" parent="BattleManager" unique_id=1827781103 instance=ExtResource("19_cegan")]
 visible = false
 scale = Vector2(0.5, 0.5)
 
-[node name="BattleBG" type="Sprite2D" parent="BattleManager"]
+[node name="BattleBG" type="Sprite2D" parent="BattleManager" unique_id=203462002]
 visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = -4095
 texture = ExtResource("2_yaehf")
 script = ExtResource("3_074og")
 
-[node name="BattleBG2" type="Sprite2D" parent="BattleManager/BattleBG"]
+[node name="BattleBG2" type="Sprite2D" parent="BattleManager/BattleBG" unique_id=1874303696]
 z_index = -4096
 texture = ExtResource("2_yaehf")
 
-[node name="TPBar" type="Sprite2D" parent="BattleManager"]
+[node name="TPBar" type="Sprite2D" parent="BattleManager" unique_id=2030197568]
 visible = false
 position = Vector2(-188, -50)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_1u8w0")
 
-[node name="TpFill" type="Sprite2D" parent="BattleManager/TPBar"]
+[node name="TpFill" type="Sprite2D" parent="BattleManager/TPBar" unique_id=1145754146]
 material = SubResource("ShaderMaterial_d13ii")
 texture = ExtResource("10_lswn8")
 
-[node name="TpIcon" type="Sprite2D" parent="BattleManager/TPBar"]
+[node name="TpIcon" type="Sprite2D" parent="BattleManager/TPBar" unique_id=1103068424]
 position = Vector2(-32, -46)
 scale = Vector2(2, 2)
 texture = ExtResource("11_a6jrf")
 
-[node name="Background" type="TileMapLayer" parent="."]
+[node name="Background" type="TileMapLayer" parent="." unique_id=1719510897]
 z_index = -4096
 tile_set = SubResource("TileSet_ycdy4")
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="." unique_id=1688255705]
 zoom = Vector2(3, 3)
 
-[node name="Textbox" type="Sprite2D" parent="Camera"]
+[node name="Textbox" type="Sprite2D" parent="Camera" unique_id=267390631]
 visible = false
 z_index = 4096
 texture_filter = 1
@@ -106,7 +114,7 @@ position = Vector2(-2, 68)
 texture = ExtResource("5_7mycd")
 script = ExtResource("2_kek77")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Camera/Textbox"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera/Textbox" unique_id=549027301]
 texture_filter = 1
 offset_left = -72.5
 offset_top = -28.0
@@ -124,20 +132,20 @@ text = "* Line 1
 scroll_active = false
 custom_effects = [SubResource("RichTextEffect_4c57u")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera/Textbox"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera/Textbox" unique_id=1498477219]
 stream = SubResource("AudioStreamRandomizer_kek77")
 max_polyphony = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera/Textbox"]
+[node name="Sprite2D" type="Sprite2D" parent="Camera/Textbox" unique_id=983866749]
 position = Vector2(-107, 0)
 texture = SubResource("CompressedTexture2D_5vw27")
 
-[node name="Subplot" type="Sprite2D" parent="Camera/Textbox"]
+[node name="Subplot" type="Sprite2D" parent="Camera/Textbox" unique_id=2033000306]
 position = Vector2(56, 19)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_kek77")
 
-[node name="Subtext" type="RichTextLabel" parent="Camera/Textbox/Subplot"]
+[node name="Subtext" type="RichTextLabel" parent="Camera/Textbox/Subplot" unique_id=946628175]
 offset_left = 28.0
 offset_top = -26.0
 offset_right = 170.0
@@ -146,35 +154,55 @@ theme_override_fonts/normal_font = ExtResource("3_kek77")
 theme_override_font_sizes/normal_font_size = 16
 text = "Th-Thanks Susie!"
 
-[node name="Music" type="AudioStreamPlayer" parent="Camera"]
+[node name="Music" type="AudioStreamPlayer" parent="Camera" unique_id=1277514281]
 stream = ExtResource("17_ryguw")
 volume_db = -6.0
 
-[node name="Image(11)" type="Sprite2D" parent="Camera"]
+[node name="Image(11)" type="Sprite2D" parent="Camera" unique_id=417953570]
 visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_074og")
 
-[node name="SCARF" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
-position = Vector2(-194, -44)
+[node name="SCARF" parent="." unique_id=892831455 node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
 leader = NodePath("../AX")
 spritesheet = ExtResource("9_kek77")
 frameoff = Vector2i(4, 0)
 spriteoff = Vector2(0, -3)
 
-[node name="AX" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
-position = Vector2(-108, 71)
+[node name="AX" parent="." unique_id=1405905758 node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
 leader = NodePath("../SWORD")
 spritesheet = ExtResource("4_1bvp3")
 frameoff = Vector2i(4, 0)
 spriteoff = Vector2(0, -3)
+idleAnim = ExtResource("22_d13ii")
+attackAnim = ExtResource("23_1u8w0")
+defendAnim = ExtResource("24_0odxb")
+itemAnim = ExtResource("25_kq58d")
+endAnim = ExtResource("26_seu75")
+actAnim = ExtResource("25_xuqvo")
+prepAnim = ExtResource("25_a6jrf")
+painAnim = ExtResource("25_lswn8")
+idleFrames = 4
+attackFrames = 4
+itemFrames = 5
+endFrames = 20
+actFrames = 12
+prepFrames = 1
+idleOff = Vector2(-15, 0)
+attackOff = Vector2(10, -13.5)
+defendOff = Vector2(-10, -14)
+itemOff = Vector2(-15, 0)
+endOff = Vector2(-15, 0)
+actOff = Vector2(7.5, -13.5)
+prepOff = Vector2(7.5, -13.5)
+hurtOff = Vector2(-12.5, -3)
 
-[node name="SWORD" parent="." instance=ExtResource("1_ig7tw")]
+[node name="SWORD" parent="." unique_id=564120309 instance=ExtResource("1_ig7tw")]
 frameoff = Vector2i(4, 0)
 
-[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
+[node name="SoundEffects" type="AudioStreamPlayer" parent="." unique_id=908351972]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=306785960]
 one_shot = true
 
 [connection signal="battle" from="." to="." method="_on_battle"]
