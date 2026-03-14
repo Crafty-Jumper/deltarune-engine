@@ -6,6 +6,6 @@ var animationframe: float = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	@warning_ignore("narrowing_conversion")
-	animationframe = fmod(animationframe,100)+1
-	animationframe += 0.5
-	texture = load("res://battle bg/BBS_" + str(int(floor(animationframe))) + ".png")
+	animationframe = fmod(animationframe,99)
+	animationframe += 1
+	texture = load("res://battle bg/BBS_" + str(int(floor(animationframe+1))) + ".png")

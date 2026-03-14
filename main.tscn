@@ -156,7 +156,7 @@ text = "Th-Thanks Susie!"
 
 [node name="Music" type="AudioStreamPlayer" parent="Camera" unique_id=1277514281]
 stream = ExtResource("17_ryguw")
-volume_db = -6.0
+volume_db = -80.0
 
 [node name="Image(11)" type="Sprite2D" parent="Camera" unique_id=417953570]
 visible = false

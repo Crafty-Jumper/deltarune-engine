@@ -2,7 +2,7 @@
 	{
 		"speakers":["susie","susie","ralsei","ralsei","susie","susie","","susie","ralsei","ralsei"],
 		"faces":[17,24,0,2,1,22,0,32,3,2],
-		"talksounds":["tv_voice_short","txtsus","txtral","txtral","","txtsus","text","","txtral","txtral"],
+		"talksounds":["txtsus","txtsus","txtral","txtral","","txtsus","text","","txtral","txtral"],
 		"dark":true,
 		"texts":[
 			"* This is the textbox guide./\n* You can put multiple input\n  checks!/",
@@ -20,15 +20,8 @@
 	{
 		"speakers":["sans"],
 		"faces":[0],
-		"talksounds":["splat"],
+		"talksounds":["tv_voice_short"],
 		"dark":false,
-		"texts":["Y___o___u___'___d___ ___b___e___ ___d___e___a___d___ ___w___h___e___r___e___ ___y___o___u___ ___s___t___a___n___d___./"]
+		"texts":["* NO!______ SUSIE!______ NOT THE {kris.png,wiistartup.mp3}/"]
 	},
-	{
-		"speakers":["sans","sans","sans","sans"],
-		"faces":[0,0,0,0],
-		"talksounds":["text","text","text","text"],
-		"dark":false,
-		"texts":["Hey, Kris!______ It's me,___ Gaster./","The one who asked you to open the\nfountain./","Thanks again for opening the fountain./","The dark fountain./"]
-	}
 ]

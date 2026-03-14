@@ -9,7 +9,7 @@ var textboxSet: Array = []
 @onready var sprite_2d: Sprite2D = $Sprite2D
 var waitForInp: bool = true
 var frameCounter:int = 0
-var textboxId: int = 2
+var textboxId: int = 1
 @onready var subplot: Sprite2D = $Subplot
 @onready var subtext: RichTextLabel = $Subplot/Subtext
 var subplotTween
@@ -25,8 +25,8 @@ const audibleLetters:Array[String] = [
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	
-	#if Input.is_action_just_pressed("c"):
-	#	get_textbox(textboxId)
+	if Input.is_action_just_pressed("c"):
+		get_textbox(textboxId)
 		
 	
 	
@@ -123,6 +123,18 @@ func addLetter():
 		return
 	if character == "_":
 		remainMsg = remainMsg.erase(0)
+		return
+	if character == "{":
+		remainMsg = remainMsg.erase(0)
+		var imagename: String = remainMsg.get_slice(",",0).replace("{","")
+		remainMsg = remainMsg.replace(imagename,"").replace(",","")
+		rich_text_label.add_image(load("res://textbox/images/"+imagename))
+		for i in 10:
+			audio_stream_player.stream.set_stream_probability_weight(i,0)
+		audio_stream_player.stream.set_stream(0,load("res://textbox/sounds/" + remainMsg.get_slice("}",0)))
+		audio_stream_player.stream.set_stream_probability_weight(0,1)
+		remainMsg = remainMsg.replace(remainMsg.get_slice("}",0),"").replace("}","")
+		audio_stream_player.play()
 		return
 	rich_text_label.text += character
 	remainMsg = remainMsg.erase(0)

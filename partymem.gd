@@ -117,7 +117,8 @@ func handle_battle_sprites(animation:String="idle") -> void:
 			frame = 0
 		battle_sprite.hframes = attackFrames
 		battle_sprite.vframes = 1
-		battle_sprite.frame = frame
+		if frame < attackFrames:
+			battle_sprite.frame = frame
 		if timing <= 0:
 			frame += 1
 			timing = 5
@@ -142,7 +143,8 @@ func handle_battle_sprites(animation:String="idle") -> void:
 			frame = 0
 		battle_sprite.hframes = actFrames
 		battle_sprite.vframes = 1
-		battle_sprite.frame = frame
+		if frame < actFrames:
+			battle_sprite.frame = frame
 		if timing <= 0:
 			frame += 1
 			timing = 5
@@ -155,7 +157,8 @@ func handle_battle_sprites(animation:String="idle") -> void:
 			frame = 0
 		battle_sprite.hframes = defendFrames
 		battle_sprite.vframes = 1
-		battle_sprite.frame = frame
+		if frame < defendFrames:
+			battle_sprite.frame = frame
 		if timing <= 0:
 			frame += 1
 			timing = 5
@@ -166,7 +169,8 @@ func handle_battle_sprites(animation:String="idle") -> void:
 			frame = 0
 		battle_sprite.hframes = itemFrames
 		battle_sprite.vframes = 1
-		battle_sprite.frame = frame
+		if frame < itemFrames:
+			battle_sprite.frame = frame
 		if timing <= 0:
 			frame += 1
 			timing = 5
@@ -189,7 +193,7 @@ func handle_battle_sprites(animation:String="idle") -> void:
 	if animation == "down":
 		if battle_sprite.texture != painAnim:
 			battle_sprite.texture = painAnim
-			frame = 0
+			frame = 1
 		battle_sprite.hframes = 2
 		battle_sprite.vframes = 1
 		battle_sprite.frame = 1
@@ -200,7 +204,8 @@ func handle_battle_sprites(animation:String="idle") -> void:
 			frame = 0
 		battle_sprite.hframes = endFrames
 		battle_sprite.vframes = 1
-		battle_sprite.frame = frame
+		if frame < endFrames:
+			battle_sprite.frame = frame
 		if timing <= 0:
 			frame += 1
 			timing = 5
