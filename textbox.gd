@@ -32,10 +32,13 @@ var choice: int = 0
 var writingChoice: int = 0
 var choiceName: String = ""
 
+func _ready() -> void:
+	Global.textbox.connect(get_textbox)
+	Global.hide_textbox.connect(kill_textbox)
+
 func _process(_delta: float) -> void:
-	
-	if Input.is_action_just_pressed("c"):
-		get_textbox(textboxId)
+	if !visible:
+		return
 		
 	if choices_node.visible:
 		if Input.is_action_just_pressed("left"):
@@ -70,7 +73,7 @@ func _process(_delta: float) -> void:
 				if textboxSet.get(msgIdx) is String or textboxSet.get(msgIdx) is Array:
 					get_textbox(textboxId)
 				else:
-					kill_textbox()
+					Global.callEvent(textbox[textboxId]["endevent"])
 					
 		return
 	else:
@@ -146,6 +149,7 @@ func show_choices() -> void:
 	return
 
 func get_textbox(id:int=0):
+	textboxId = id
 	choices_node.hide()
 	rich_text_label.show()
 	subplot.hide()

@@ -4,6 +4,7 @@
 		"faces":[17,24,0,2,1,22,0,32,3,2,17,17],
 		"talksounds":["txtsus","txtsus","txtral","txtral","","txtsus","text","","txtral","txtral"],
 		"dark":true,
+		"endevent":2,
 		"texts":[
 			"* This is the textbox guide./\n* You can put multiple input\n  checks!/",
 			"* There's even different\n  ^YCOLORS^W!/",
@@ -21,17 +22,19 @@
 		]
 	},
 	{
-		"speakers":["none"],
-		"faces":[0],
-		"talksounds":["tv_voice_short"],
+		"speakers":["none","none"],
+		"faces":[0,0],
+		"talksounds":["tv_voice_short","tv_voice_short"],
 		"dark":false,
-		"texts":["* NO!______ SUSIE!______ NOT THE ^S\n  {wiimote.png,wiistartup.mp3}/"]
+		"endevent":2,
+		"texts":["* NO!______ SUSIE!______ NOT THE ^S\n  {wiimote.png,wiistartup.mp3}/","* Don't do it!/"]
 	},
 	{
 		"speakers":["susie","choice","susie"],
 		"faces":[0,[0,0,0,0],0],
 		"talksounds":["txtsus","text","txtsus"],
 		"dark":true,
+		"endevent":2,
 		"texts":["* Hey,___ Kris./\n* Do you think your choices\n  matter?/",["No","Yes","Maybe","Merl"],"I thought so./"]
 	}
 ]

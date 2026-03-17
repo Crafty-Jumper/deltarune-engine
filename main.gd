@@ -11,9 +11,6 @@ var attacking: bool = false
 @onready var ralsei: CharacterBody2D = $SCARF
 
 func _process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("c"):
-	#	if not battling:
-	#		battle.emit()
 	if !music.playing:
 		music.play()
 

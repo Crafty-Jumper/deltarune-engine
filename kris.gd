@@ -49,7 +49,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	timing -= (2 if Input.is_action_pressed("x") else 1)
 	var direction := Vector2(Input.get_axis("left", "right"),Input.get_axis("up","down")) * int(canMove)
-	if direction:
+	if direction and Global.canMove:
 		velocity = direction * SPEED * (2.0 if Input.is_action_pressed("x") else 1.0)
 		if timing <= 0:
 			frame += 1
@@ -57,14 +57,15 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2(0,0)
 		frame = 0
-	if direction.x == 1:
-		dir = 2
-	if direction.x == -1:
-		dir = 1
-	if direction.y == 1:
-		dir = 0
-	if direction.y == -1:
-		dir = 3
+	if Global.canMove:
+		if direction.x == 1:
+			dir = 2
+		if direction.x == -1:
+			dir = 1
+		if direction.y == 1:
+			dir = 0
+		if direction.y == -1:
+			dir = 3
 	
 	frame = fmod(frame,4)
 	
