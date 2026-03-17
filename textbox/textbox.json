@@ -1,7 +1,7 @@
 [
 	{
-		"speakers":["susie","susie","ralsei","ralsei","susie","susie","","susie","ralsei","ralsei"],
-		"faces":[17,24,0,2,1,22,0,32,3,2],
+		"speakers":["susie","susie","ralsei","ralsei","susie","susie","","susie","ralsei","ralsei","susie","susie","choice"],
+		"faces":[17,24,0,2,1,22,0,32,3,2,17,17],
 		"talksounds":["txtsus","txtsus","txtral","txtral","","txtsus","text","","txtral","txtral"],
 		"dark":true,
 		"texts":[
@@ -14,7 +14,10 @@
 			"(No matter what you try,___ these\neffects don't work on sub-texts.)",
 			"WHAT DO YOU\n^RMEAN??",
 			"* ^OUNDERSCORES^W are treated as\n  pauses,___ and don't get\n  placed in the ^MTEXT^W./",
-			"* S___o___ ___I___ ___c___o___u___l___d___ ___s___p___e___a___k___ ___r___e___a___l___l___y___\n  ___s___l___o___w___l___y___!/"
+			"* S___o___ ___I___ ___c___o___u___l___d___ ___s___p___e___a___k___ ___r___e___a___l___l___y___\n  ___s___l___o___w___l___y___!/",
+			"* That's not all./",
+			"* You can choose choices too!/",
+			["Really?","Wow!"]
 		]
 	},
 	{
@@ -25,10 +28,10 @@
 		"texts":["* NO!______ SUSIE!______ NOT THE ^S\n  {wiimote.png,wiistartup.mp3}/"]
 	},
 	{
-		"speakers":["susie","choice"],
-		"faces":[0,[0,0]],
-		"talksounds":["txtsus","text"],
+		"speakers":["susie","choice","susie"],
+		"faces":[0,[0,0,0,0],0],
+		"talksounds":["txtsus","text","txtsus"],
 		"dark":true,
-		"texts":["* Hey,___ Kris./\n* Do you think your choices\n  matter?/",["Yes","No"]]
+		"texts":["* Hey,___ Kris./\n* Do you think your choices\n  matter?/",["No","Yes","Maybe","Merl"],"I thought so./"]
 	}
 ]
