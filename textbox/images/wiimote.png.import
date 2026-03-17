@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xxodkklk5ra5"
-path="res://.godot/imported/kris.png-07742d9bc5cac30782d39428f59f0aef.ctex"
+uid="uid://cceb3qpuwubt7"
+path="res://.godot/imported/wiimote.png-ee3672e74feb87403f1a9436c25bee3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textbox/images/kris.png"
-dest_files=["res://.godot/imported/kris.png-07742d9bc5cac30782d39428f59f0aef.ctex"]
+source_file="res://textbox/images/wiimote.png"
+dest_files=["res://.godot/imported/wiimote.png-ee3672e74feb87403f1a9436c25bee3a.ctex"]
 
 [params]
 

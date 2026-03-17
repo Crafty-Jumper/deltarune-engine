@@ -116,19 +116,83 @@ script = ExtResource("2_kek77")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera/Textbox" unique_id=549027301]
 texture_filter = 1
+clip_contents = false
 offset_left = -72.5
 offset_top = -28.0
 offset_right = 141.0
 offset_bottom = 23.0
-theme_override_constants/line_separation = 2
-theme_override_constants/paragraph_separation = 2
-theme_override_constants/shadow_outline_size = 1
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
 theme_override_fonts/normal_font = ExtResource("3_kek77")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "* Line 1
-* Line 2
-* Line 3"
+text = "[img height=30]res://textbox/images/wiimote.png[/img]"
+scroll_active = false
+custom_effects = [SubResource("RichTextEffect_4c57u")]
+
+[node name="Choices" type="Node2D" parent="Camera/Textbox" unique_id=537626686]
+
+[node name="1" type="RichTextLabel" parent="Camera/Textbox/Choices" unique_id=1638745459]
+texture_filter = 1
+clip_contents = false
+offset_left = -138.0
+offset_top = -10.0
+offset_right = -82.0
+offset_bottom = 31.0
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("3_kek77")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Option 1"
+scroll_active = false
+custom_effects = [SubResource("RichTextEffect_4c57u")]
+
+[node name="2" type="RichTextLabel" parent="Camera/Textbox/Choices" unique_id=1886684668]
+texture_filter = 1
+clip_contents = false
+offset_left = 82.0
+offset_top = -10.0
+offset_right = 138.0
+offset_bottom = 31.0
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("3_kek77")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Option 2"
+scroll_active = false
+custom_effects = [SubResource("RichTextEffect_4c57u")]
+
+[node name="3" type="RichTextLabel" parent="Camera/Textbox/Choices" unique_id=757697065]
+texture_filter = 1
+clip_contents = false
+offset_left = -26.0
+offset_top = -35.0
+offset_right = 30.0
+offset_bottom = 6.0
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("3_kek77")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Option 3"
+scroll_active = false
+custom_effects = [SubResource("RichTextEffect_4c57u")]
+
+[node name="4" type="RichTextLabel" parent="Camera/Textbox/Choices" unique_id=52680994]
+texture_filter = 1
+clip_contents = false
+offset_left = -26.0
+offset_top = 15.0
+offset_right = 30.0
+offset_bottom = 35.0
+theme_override_constants/line_separation = 1
+theme_override_constants/paragraph_separation = 1
+theme_override_fonts/normal_font = ExtResource("3_kek77")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Option 4"
 scroll_active = false
 custom_effects = [SubResource("RichTextEffect_4c57u")]
 
@@ -137,10 +201,12 @@ stream = SubResource("AudioStreamRandomizer_kek77")
 max_polyphony = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera/Textbox" unique_id=983866749]
+visible = false
 position = Vector2(-107, 0)
 texture = SubResource("CompressedTexture2D_5vw27")
 
 [node name="Subplot" type="Sprite2D" parent="Camera/Textbox" unique_id=2033000306]
+visible = false
 position = Vector2(56, 19)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_kek77")

@@ -18,10 +18,17 @@
 		]
 	},
 	{
-		"speakers":["sans"],
+		"speakers":["none"],
 		"faces":[0],
 		"talksounds":["tv_voice_short"],
 		"dark":false,
-		"texts":["* NO!______ SUSIE!______ NOT THE {kris.png,wiistartup.mp3}/"]
+		"texts":["* NO!______ SUSIE!______ NOT THE ^S\n  {wiimote.png,wiistartup.mp3}/"]
 	},
+	{
+		"speakers":["susie","choice"],
+		"faces":[0,[0,0]],
+		"talksounds":["txtsus","text"],
+		"dark":true,
+		"texts":["* Hey,___ Kris./\n* Do you think your choices\n  matter?/",["Yes","No"]]
+	}
 ]

@@ -9,7 +9,7 @@ var textboxSet: Array = []
 @onready var sprite_2d: Sprite2D = $Sprite2D
 var waitForInp: bool = true
 var frameCounter:int = 0
-var textboxId: int = 1
+var textboxId: int = 2
 @onready var subplot: Sprite2D = $Subplot
 @onready var subtext: RichTextLabel = $Subplot/Subtext
 var subplotTween
@@ -21,6 +21,9 @@ const audibleLetters:Array[String] = [
 	"n","o","p","q","r","s","t","u","v","w","x","y","z",
 	".",",","!","?"
 ]
+var choosing: bool = false
+
+@onready var choices_node: Node2D = $Choices
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -36,7 +39,7 @@ func _process(_delta: float) -> void:
 			waitForInp = false
 			if remainMsg == "":
 				msgIdx += 1
-				if textboxSet.get(msgIdx) is String:
+				if textboxSet.get(msgIdx) is String or textboxSet.get(msgIdx) is Array:
 					get_textbox(textboxId)
 				else:
 					kill_textbox()
@@ -45,6 +48,7 @@ func _process(_delta: float) -> void:
 	else:
 		if remainMsg == "":
 			get_textbox_sub(textboxId)
+	
 	addLetter()
 
 func get_textbox_sub(id:int=0):
@@ -59,9 +63,22 @@ func get_textbox_sub(id:int=0):
 		subplot.texture = load("res://textbox/" + textbox[id]["speakers"][msgIdx] + "/" + str(int(textbox[id]["faces"][msgIdx])) + ".png")
 	
 
+func show_choices() -> void:
+	remainMsg = "/"
+	show()
+	rich_text_label.hide()
+	choices_node.show()
+	sprite_2d.hide()
+	return
+
 func get_textbox(id:int=0):
+	choices_node.hide()
+	rich_text_label.show()
 	subplot.hide()
 	rich_text_label.text = ""
+	if textbox[id]["speakers"][msgIdx] == "choice":
+		show_choices()
+		return
 	remainMsg = textbox[id]["texts"][msgIdx]
 	textboxSet = textbox[id]["texts"]
 	show()
@@ -76,46 +93,46 @@ func get_textbox(id:int=0):
 		rich_text_label.position.x = -130.5
 		rich_text_label.size.x = 271.0
 
-func addLetter():
+func addLetter(label:RichTextLabel=rich_text_label):
 	if fmod(frameCounter,2) == 0:
 		return
 	
 	var character = remainMsg.substr(0,1)
 	if character == "\n":
 		for i in remainMsg:
-			rich_text_label.text += character
+			label.text += character
 			remainMsg = remainMsg.erase(0)
 			character = remainMsg.substr(0,1)
 			if character != " ":
 				break
-			
 	
+	# Text Formatting
 	if character == "^":
 		remainMsg = remainMsg.erase(0)
 		character = remainMsg.substr(0,1)
 		remainMsg = remainMsg.erase(0)
 		if character == "Y":
-			rich_text_label.text += "[color=ff0]"
+			label.text += "[color=ff0]"
 		if character == "G":
-			rich_text_label.text += "[color=0f0]"
+			label.text += "[color=0f0]"
 		if character == "R":
-			rich_text_label.text += "[color=f00]"
+			label.text += "[color=f00]"
 		if character == "O":
-			rich_text_label.text += "[color=f70]"
+			label.text += "[color=f70]"
 		if character == "B":
-			rich_text_label.text += "[color=00f]"
+			label.text += "[color=00f]"
 		if character == "P":
-			rich_text_label.text += "[color=70f]"
+			label.text += "[color=70f]"
 		if character == "M":
-			rich_text_label.text += "[color=f0f]"
+			label.text += "[color=f0f]"
 		if character == "W":
-			rich_text_label.text += "[/color]"
+			label.text += "[/color]"
 		if character == "S":
-			rich_text_label.text += "[shake connected=1]"
+			label.text += "[shake connected=1]"
 		if character == "s":
-			rich_text_label.text += "[/shake]"
+			label.text += "[/shake]"
 		if character == "L":
-			rich_text_label.text += "[color=7f0]"
+			label.text += "[color=7f0]"
 		character = remainMsg.substr(0,1)
 	if  character == "/":
 		waitForInp = true
@@ -126,9 +143,9 @@ func addLetter():
 		return
 	if character == "{":
 		remainMsg = remainMsg.erase(0)
-		var imagename: String = remainMsg.get_slice(",",0).replace("{","")
+		var imagename: String = remainMsg.get_slice(",",0)
 		remainMsg = remainMsg.replace(imagename,"").replace(",","")
-		rich_text_label.add_image(load("res://textbox/images/"+imagename))
+		label.add_image(load("res://textbox/images/"+imagename),0,30)
 		for i in 10:
 			audio_stream_player.stream.set_stream_probability_weight(i,0)
 		audio_stream_player.stream.set_stream(0,load("res://textbox/sounds/" + remainMsg.get_slice("}",0)))
@@ -136,7 +153,7 @@ func addLetter():
 		remainMsg = remainMsg.replace(remainMsg.get_slice("}",0),"").replace("}","")
 		audio_stream_player.play()
 		return
-	rich_text_label.text += character
+	label.text += character
 	remainMsg = remainMsg.erase(0)
 	if audibleLetters.has(character):
 		var path = "res://textbox/sounds/snd_" + textbox[textboxId]["talksounds"][msgIdx] + ".wav"
