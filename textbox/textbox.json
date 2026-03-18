@@ -2,9 +2,9 @@
 	{
 		"speakers":["susie","susie","ralsei","ralsei","susie","susie","","susie","ralsei","ralsei","susie","susie","choice"],
 		"faces":[17,24,0,2,1,22,0,32,3,2,17,17],
-		"talksounds":["txtsus","txtsus","txtral","txtral","","txtsus","text","","txtral","txtral"],
+		"talksounds":["txtsus","txtsus","txtral","txtral","","txtsus","text","","txtral","txtral","txtsus","txtsus","text"],
 		"dark":true,
-		"endevent":2,
+		"endevent":1,
 		"texts":[
 			"* This is the textbox guide./\n* You can put multiple input\n  checks!/",
 			"* There's even different\n  ^YCOLORS^W!/",
@@ -26,7 +26,7 @@
 		"faces":[0,0],
 		"talksounds":["tv_voice_short","tv_voice_short"],
 		"dark":false,
-		"endevent":2,
+		"endevent":1,
 		"texts":["* NO!______ SUSIE!______ NOT THE ^S\n  {wiimote.png,wiistartup.mp3}/","* Don't do it!/"]
 	},
 	{
@@ -34,7 +34,16 @@
 		"faces":[0,[0,0,0,0],0],
 		"talksounds":["txtsus","text","txtsus"],
 		"dark":true,
-		"endevent":2,
+		"endevent":1,
 		"texts":["* Hey,___ Kris./\n* Do you think your choices\n  matter?/",["No","Yes","Maybe","Merl"],"I thought so./"]
-	}
+	},
+	{
+		"speakers":["sans","choice","sans"],
+		"faces":[0,[0,0,0,0],0],
+		"talksounds":["txtsans","text","txtsans"],
+		"dark":true,
+		"endevent":1,
+		"texts":["^c* heya./",["No","Go away"],"^c* okay./\n* don't have to be so harsh/"]
+	},
+	
 ]

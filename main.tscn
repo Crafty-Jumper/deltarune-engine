@@ -8,17 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://ccawjjop2md8q" path="res://battle bg/BBS_1.png" id="2_yaehf"]
 [ext_resource type="AudioStream" uid="uid://c63xgodpgmji2" path="res://textbox/sounds/snd_txtsus.wav" id="3_5vw27"]
 [ext_resource type="Script" uid="uid://cw1ibpaqy5k4e" path="res://battle_bg.gd" id="3_074og"]
-[ext_resource type="FontFile" uid="uid://cjloxrsvbqe82" path="res://textbox/8bitoperator JVE.ttf" id="3_kek77"]
-[ext_resource type="Texture2D" uid="uid://dhwdi8xiesi60" path="res://susie.png" id="4_1bvp3"]
+[ext_resource type="FontFile" uid="uid://cjloxrsvbqe82" path="res://textbox/default.ttf" id="3_kek77"]
+[ext_resource type="Texture2D" uid="uid://dhwdi8xiesi60" path="res://spritesheets/susie.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://g6wuv3vbgf4i" path="res://darkworldtext.gd" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://bufjnv22t3mij" path="res://textbox/lightworld.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://b46loo7yumfoq" path="res://textbox/ralsei/0.png" id="5_kek77"]
 [ext_resource type="Texture2D" uid="uid://bh40jx7natsxn" path="res://battle stuff/tp bar/tp_bar_sprite_bg.png" id="8_1u8w0"]
 [ext_resource type="Shader" uid="uid://b8tu3lrsnd1ny" path="res://battle stuff/tp bar/tp_bar_fill.gdshader" id="9_0odxb"]
-[ext_resource type="Texture2D" uid="uid://b5x6wx85omrgf" path="res://ralsei.png" id="9_kek77"]
+[ext_resource type="Texture2D" uid="uid://b5x6wx85omrgf" path="res://spritesheets/ralsei.png" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://c0aex5gvjaq03" path="res://battle stuff/tp bar/tp_bar_sprite_mask.png" id="10_lswn8"]
 [ext_resource type="Texture2D" uid="uid://dftojhsca6i52" path="res://battle stuff/tp bar/tp_icon.png" id="11_a6jrf"]
 [ext_resource type="Texture2D" uid="uid://bv0h7juhhqnsq" path="res://image (11).png" id="14_074og"]
+[ext_resource type="Script" uid="uid://b7n0kl2nrcunk" path="res://comicsans.gd" id="15_htxhm"]
 [ext_resource type="AudioStream" uid="uid://bknhgmlh4q0y" path="res://music/battle.ogg" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://cx1bnqf06uifo" path="res://battle stuff/soul.tscn" id="19_cegan"]
 [ext_resource type="PackedScene" uid="uid://b72ye1wvvh1vm" path="res://battle stuff/battle_box.tscn" id="20_82xsv"]
@@ -30,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cd87c1ergxqrd" path="res://battle stuff/battle sprites/susie/pain.png" id="25_lswn8"]
 [ext_resource type="Texture2D" uid="uid://ckekb36repdxn" path="res://battle stuff/battle sprites/susie/act.png" id="25_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://blaoa7xmoans2" path="res://battle stuff/battle sprites/susie/end.png" id="26_seu75"]
+[ext_resource type="PackedScene" uid="uid://b2p0dwvtb05fo" path="res://npc.tscn" id="31_seu75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
 resource_local_to_scene = true
@@ -45,6 +47,10 @@ shader_parameter/fill = 1.0
 [sub_resource type="RichTextEffect" id="RichTextEffect_4c57u"]
 script = ExtResource("4_4c57u")
 metadata/_custom_type_script = "uid://g6wuv3vbgf4i"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_jq2sk"]
+script = ExtResource("15_htxhm")
+metadata/_custom_type_script = "uid://b7n0kl2nrcunk"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kek77"]
 streams_count = 10
@@ -107,7 +113,6 @@ tile_set = SubResource("TileSet_ycdy4")
 zoom = Vector2(3, 3)
 
 [node name="Textbox" type="Sprite2D" parent="Camera" unique_id=267390631]
-visible = false
 z_index = 4096
 texture_filter = 1
 position = Vector2(-2, 68)
@@ -126,11 +131,12 @@ theme_override_constants/paragraph_separation = 1
 theme_override_fonts/normal_font = ExtResource("3_kek77")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[img height=30]res://textbox/images/wiimote.png[/img]"
+text = "[comicsans]text[/comicsans]"
 scroll_active = false
-custom_effects = [SubResource("RichTextEffect_4c57u")]
+custom_effects = [SubResource("RichTextEffect_4c57u"), SubResource("RichTextEffect_jq2sk")]
 
 [node name="Choices" type="Node2D" parent="Camera/Textbox" unique_id=537626686]
+visible = false
 
 [node name="1" type="RichTextLabel" parent="Camera/Textbox/Choices" unique_id=1638745459]
 texture_filter = 1
@@ -270,6 +276,10 @@ frameoff = Vector2i(4, 0)
 
 [node name="Timer" type="Timer" parent="." unique_id=306785960]
 one_shot = true
+
+[node name="Node2D" parent="." unique_id=217709102 instance=ExtResource("31_seu75")]
+position = Vector2(-93, -5)
+interactionEvent = 4
 
 [connection signal="battle" from="." to="." method="_on_battle"]
 [connection signal="battle" from="." to="BattleManager" method="_on_node_2d_battle"]

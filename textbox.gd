@@ -189,6 +189,10 @@ func addLetter(label:RichTextLabel=rich_text_label):
 		remainMsg = remainMsg.erase(0)
 		character = remainMsg.substr(0,1)
 		remainMsg = remainMsg.erase(0)
+		if character == "c":
+			label.text += "[font=\"res://textbox/comic.ttf\"]"
+		if character == "C":
+			label.text += "[/font]"
 		if character == "Y":
 			label.text += "[color=ff0]"
 		if character == "G":

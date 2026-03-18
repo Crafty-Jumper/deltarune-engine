@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://73002twbewuj"
-path="res://.godot/imported/kris.png-e121157420236604e348d61866afc716.ctex"
+uid="uid://b5x6wx85omrgf"
+path="res://.godot/imported/ralsei.png-88d559713164e681470a839c619790f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kris.png"
-dest_files=["res://.godot/imported/kris.png-e121157420236604e348d61866afc716.ctex"]
+source_file="res://spritesheets/ralsei.png"
+dest_files=["res://.godot/imported/ralsei.png-88d559713164e681470a839c619790f5.ctex"]
 
 [params]
 
