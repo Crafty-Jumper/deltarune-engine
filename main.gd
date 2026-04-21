@@ -10,6 +10,12 @@ var attacking: bool = false
 @onready var susie: CharacterBody2D = $AX
 @onready var ralsei: CharacterBody2D = $SCARF
 
+func _ready() -> void:
+	Global.battle.connect(startbattle)
+
+func startbattle() -> void:
+	battle.emit()
+
 func _process(_delta: float) -> void:
 	if !music.playing:
 		music.play()

@@ -5,10 +5,20 @@ var frame: int = 0
 var timing: int = 20
 var dir: int = 0
 @onready var sprite: Sprite2D = $Sprite2D
-@export var interactionEvent: int = 0
 @onready var area_2d: Area2D = $Area2D
 @onready var area_2d_2: Area2D = $Area2D2
+
+@export var interactionEvent: int = 0
+@export var texture: Texture
+@export var walkCycle: int = 4
+@export var walkCycles: int = 1
+
 var interacted: bool = false
+
+func _ready() -> void:
+	sprite.texture = texture
+	sprite.hframes = walkCycle * walkCycles
+	sprite.vframes = 4
 
 func _process(delta: float) -> void:
 	var prevPos: Vector2 = global_position

@@ -42,13 +42,17 @@ func _process(_delta: float) -> void:
 		
 	if choices_node.visible:
 		if Input.is_action_just_pressed("left"):
-			choice = 1
+			if _1.text != "":
+				choice = 1
 		if Input.is_action_just_pressed("right"):
-			choice = 2
+			if _2.text != "":
+				choice = 2
 		if Input.is_action_just_pressed("up"):
-			choice = 3
+			if _3.text != "":
+				choice = 3
 		if Input.is_action_just_pressed("down"):
-			choice = 4
+			if _4.text != "":
+				choice = 4
 	
 	_1.modulate = Color.WHITE
 	_2.modulate = Color.WHITE
@@ -65,16 +69,18 @@ func _process(_delta: float) -> void:
 		_4.modulate = Color.YELLOW
 	
 	frameCounter += 1
+	
 	if waitForInp:
 		if Input.is_action_just_pressed("z"):
 			waitForInp = false
-			if remainMsg == "":
+			if remainMsg.length() > 1:
+				return
+			if textboxSet.size()-1 > msgIdx:
 				msgIdx += 1
-				if textboxSet.get(msgIdx) is String or textboxSet.get(msgIdx) is Array:
-					get_textbox(textboxId)
-				else:
-					Global.callEvent(textbox[textboxId]["endevent"])
-					
+				get_textbox(textboxId)
+			else:
+				waitForInp = true
+				Global.callEvent(textbox[textboxId]["endevent"])
 		return
 	else:
 		if remainMsg == "":
@@ -83,6 +89,7 @@ func _process(_delta: float) -> void:
 		write_to_choice()
 	else:
 		addLetter()
+	
 
 func get_textbox_sub(id:int=0):
 	tweenSubplot()
@@ -149,6 +156,8 @@ func show_choices() -> void:
 	return
 
 func get_textbox(id:int=0):
+	if textboxId != id:
+		msgIdx = 0
 	textboxId = id
 	choices_node.hide()
 	rich_text_label.show()
@@ -161,6 +170,7 @@ func get_textbox(id:int=0):
 	textboxSet = textbox[id]["texts"]
 	show()
 	waitForInp = false
+	choosing = false
 	if FileAccess.file_exists("res://textbox/" + textbox[id]["speakers"][msgIdx] + "/" + str(int(textbox[id]["faces"][msgIdx])) + ".png"):
 		sprite_2d.show()
 		rich_text_label.position.x = -72.5
@@ -247,7 +257,6 @@ func addLetter(label:RichTextLabel=rich_text_label):
 		else:
 			load_randomized_sounds()
 		audio_stream_player.play()
-		
 
 func kill_textbox() -> void:
 	waitForInp = true
