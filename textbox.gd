@@ -80,7 +80,7 @@ func _process(_delta: float) -> void:
 				get_textbox(textboxId)
 			else:
 				waitForInp = true
-				Global.callEvent(textbox[textboxId]["endevent"])
+				Global.callEvent(int(textbox[textboxId].get("endevent")))
 		return
 	else:
 		if remainMsg == "":
