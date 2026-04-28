@@ -120,7 +120,7 @@ func write_to_choice() -> void:
 		currNode = _4
 	
 	var character = choiceName.substr(0,1)
-	currNode.text += character
+	currNode.append_text(character)
 	choiceName = choiceName.erase(0)
 	
 	if audibleLetters.has(character):
@@ -188,7 +188,7 @@ func addLetter(label:RichTextLabel=rich_text_label):
 	var character = remainMsg.substr(0,1)
 	if character == "\n":
 		for i in remainMsg:
-			label.text += character
+			label.append_text(character)
 			remainMsg = remainMsg.erase(0)
 			character = remainMsg.substr(0,1)
 			if character != " ":
@@ -199,32 +199,33 @@ func addLetter(label:RichTextLabel=rich_text_label):
 		remainMsg = remainMsg.erase(0)
 		character = remainMsg.substr(0,1)
 		remainMsg = remainMsg.erase(0)
+		
 		if character == "c":
-			label.text += "[font=\"res://textbox/comic.ttf\"]"
+			label.append_text("[font=\"res://textbox/comic.ttf\"]")
 		if character == "C":
-			label.text += "[/font]"
+			label.append_text("[/font]")
 		if character == "Y":
-			label.text += "[color=ff0]"
+			label.append_text("[color=ff0]")
 		if character == "G":
-			label.text += "[color=0f0]"
+			label.append_text("[color=0f0]")
 		if character == "R":
-			label.text += "[color=f00]"
+			label.append_text("[color=f00]")
 		if character == "O":
-			label.text += "[color=f70]"
+			label.append_text("[color=f70]")
 		if character == "B":
-			label.text += "[color=00f]"
+			label.append_text("[color=00f]")
 		if character == "P":
-			label.text += "[color=70f]"
+			label.append_text("[color=70f]")
 		if character == "M":
-			label.text += "[color=f0f]"
+			label.append_text("[color=f0f]")
 		if character == "W":
-			label.text += "[/color]"
+			label.append_text("[/color]")
 		if character == "S":
-			label.text += "[shake connected=1]"
+			label.append_text("[shake connected=1]")
 		if character == "s":
-			label.text += "[/shake]"
+			label.append_text("[/shake]")
 		if character == "L":
-			label.text += "[color=7f0]"
+			label.append_text("[color=7f0]")
 		character = remainMsg.substr(0,1)
 	if  character == "/":
 		waitForInp = true
@@ -245,7 +246,7 @@ func addLetter(label:RichTextLabel=rich_text_label):
 		remainMsg = remainMsg.replace(remainMsg.get_slice("}",0),"").replace("}","")
 		audio_stream_player.play()
 		return
-	label.text += character
+	label.append_text(character)
 	remainMsg = remainMsg.erase(0)
 	if audibleLetters.has(character):
 		var path = "res://textbox/sounds/snd_" + textbox[textboxId]["talksounds"][msgIdx] + ".wav"

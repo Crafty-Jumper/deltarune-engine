@@ -21,44 +21,4 @@
 			["Really?","Wow!"]
 		]
 	},
-	{
-		"speakers":["none","none"],
-		"faces":[0,0],
-		"talksounds":["tv_voice_short","tv_voice_short"],
-		"dark":false,
-		"endevent":1,
-		"texts":["* ^SNO!______ SUSIE!______ NOT THE\n  ^s{wiimote.png,wiistartup.mp3}/","* Don't do it!/"]
-	},
-	{
-		"speakers":["none"],
-		"faces":[0,0],
-		"talksounds":["tv_voice_short"],
-		"dark":false,
-		"endevent":1,
-		"texts":["* NO!______ SUSIE!______ NOT THE ^S\n  {wiimote.png,wiistartup.mp3}/"]
-	},
-	{
-		"speakers":["susie","choice","susie"],
-		"faces":[0,[0,0,0,0],0],
-		"talksounds":["txtsus","text","txtsus"],
-		"dark":true,
-		"endevent":1,
-		"texts":["* Hey,___ Kris./\n* Do you think your choices\n  matter?/",["No","Yes","Maybe","Merl"],"I thought so./"]
-	},
-	{
-		"speakers":["sans","susie","sans","choice","sans"],
-		"faces":[0,16,0,[0,0,0,0],0],
-		"talksounds":["txtsans","txtsus","txtsans","text","txtsans"],
-		"dark":true,
-		"endevent":2,
-		"texts":["^c* heya.______ i just \"befriended\" your mother last night./","* WHAT THE HELL/","^c* yeah./\n* what did you three want?/",["Nothing","I forgot"],"^c* okay./"]
-	},
-	{
-		"speakers":["none","choice"],
-		"faces":[0,[1,1,1,1]],
-		"talksounds":["bwomp","text"],
-		"dark":true,
-		"endevent":5,
-		"texts":["John textbox/",["when","will my","code work"]]
-	},
 ]
