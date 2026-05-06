@@ -71,7 +71,7 @@ func _process(_delta: float) -> void:
 	frameCounter += 1
 	
 	if waitForInp:
-		if Input.is_action_just_pressed("z"):
+		if Input.is_action_just_pressed("z") or Input.is_action_pressed("c"):
 			waitForInp = false
 			if remainMsg.length() > 1:
 				return
@@ -88,8 +88,17 @@ func _process(_delta: float) -> void:
 	if choosing:
 		write_to_choice()
 	else:
-		addLetter()
+		if !Input.is_action_just_pressed("x") and !Input.is_action_pressed("c"):
+			addLetter()
+		else:
+			finish_textbox()
 	
+
+func finish_textbox() -> void:
+	for i in remainMsg.length():
+		addLetter()
+		if remainMsg == "":
+			break
 
 func get_textbox_sub(id:int=0):
 	tweenSubplot()
@@ -238,7 +247,10 @@ func addLetter(label:RichTextLabel=rich_text_label):
 		remainMsg = remainMsg.erase(0)
 		var imagename: String = remainMsg.get_slice(",",0)
 		remainMsg = remainMsg.replace(imagename,"").replace(",","")
-		label.add_image(load("res://textbox/images/"+imagename),0,30)
+		if imagename.ends_with(".gif"):
+			label.add_image(GIFTexture.load_from_file("res://textbox/images/"+imagename),0,30)
+		else:
+			label.add_image(load("res://textbox/images/"+imagename),0,30)
 		for i in 10:
 			audio_stream_player.stream.set_stream_probability_weight(i,0)
 		audio_stream_player.stream.set_stream(0,load("res://textbox/sounds/" + remainMsg.get_slice("}",0)))

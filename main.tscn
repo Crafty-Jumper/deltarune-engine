@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://ckekb36repdxn" path="res://battle stuff/battle sprites/susie/act.png" id="25_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://cne02v4rialq" path="res://spritesheets/sans.png" id="26_lswn8"]
 [ext_resource type="Texture2D" uid="uid://blaoa7xmoans2" path="res://battle stuff/battle sprites/susie/end.png" id="26_seu75"]
+[ext_resource type="Script" uid="uid://d04h2gje84myy" path="res://new_room_trigger.gd" id="27_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://b2p0dwvtb05fo" path="res://npc.tscn" id="31_seu75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
@@ -37,6 +38,10 @@ shader_parameter/foam_amount = 1.0
 shader_parameter/fill = 1.0
 
 [sub_resource type="TileSet" id="TileSet_ycdy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lswn8"]
+
+[sub_resource type="GIFTexture" id="GIFTexture_a6jrf"]
 
 [node name="Node2D" type="Node2D" unique_id=257948741]
 y_sort_enabled = true
@@ -145,6 +150,16 @@ position = Vector2(-93, -5)
 interactionEvent = 4
 texture = ExtResource("26_lswn8")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=504727520]
+position = Vector2(118, 0)
+script = ExtResource("27_a6jrf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=874026546]
+shape = SubResource("RectangleShape2D_lswn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2134839317]
+texture = SubResource("GIFTexture_a6jrf")
+
 [connection signal="battle" from="." to="." method="_on_battle"]
 [connection signal="battle" from="." to="BattleManager" method="_on_node_2d_battle"]
 [connection signal="battle" from="." to="SWORD" method="_on_battle_triggered"]
@@ -153,3 +168,4 @@ texture = ExtResource("26_lswn8")
 [connection signal="timeout" from="BattleManager/Attack" to="BattleManager" method="_on_attack_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="BattleManager" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

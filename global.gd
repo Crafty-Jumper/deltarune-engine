@@ -1,4 +1,4 @@
-extends Node
+extends ColorRect
 
 # basic stuff
 var canMove: bool = true
@@ -13,8 +13,6 @@ var EVENTS = JSON.parse_string(FileAccess.open("res://events.json",FileAccess.RE
 
 func _process(delta: float) -> void:
 	frame += 60 * delta
-	if Input.is_action_just_pressed("c"):
-		callEvent(1)
 
 func callEvent(event=0) -> void:
 	if event is int:
@@ -38,3 +36,6 @@ func handleCommand(command:String="EM"):
 		hide_textbox.emit()
 	if command == "BTL":
 		battle.emit()
+
+func change_scene(path:String):
+	pass

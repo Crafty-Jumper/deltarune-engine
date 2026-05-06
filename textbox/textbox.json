@@ -21,4 +21,14 @@
 			["Really?","Wow!"]
 		]
 	},
+	{
+		"speakers":["none"],
+		"faces":[17],
+		"talksounds":["tv_voice_short"],
+		"dark":true,
+		"endevent":1,
+		"texts":[
+			"* Your next {physicalchallenge.gif,snd_splat.wav}______ is to stop me from killing myself/",
+		]
+	},
 ]
