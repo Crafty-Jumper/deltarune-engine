@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var music: AudioStreamPlayer = $Camera/Music
+@onready var music: AudioStreamPlayer = $Music
 signal battle
 var battling: bool = false
 @onready var timer: Timer = $Timer

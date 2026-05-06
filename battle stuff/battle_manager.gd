@@ -30,8 +30,10 @@ func _process(_delta: float) -> void:
 	
 	tension = clamp(tension,0.0,100.0)
 	
-	if Input.is_action_just_pressed("c"):
-		attacking.emit()
+	
+	if get_parent().battling:
+		if Input.is_action_just_pressed("c"):
+			attacking.emit()
 	
 	
 	if battle_box.scale == Vector2(0.25,0.25) and battle_box.visible:

@@ -3,19 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://c23hbximofv3t" path="res://scenes/kris.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b3nr7e7fpbjwr" path="res://main.gd" id="1_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://dci65i4dx1nmg" path="res://scenes/partymem.tscn" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://bffji0bfm0vr8" path="res://battle stuff/battle_manager.gd" id="2_1u8w0"]
-[ext_resource type="Texture2D" uid="uid://ccawjjop2md8q" path="res://battle bg/BBS_1.png" id="2_yaehf"]
-[ext_resource type="Script" uid="uid://cw1ibpaqy5k4e" path="res://battle_bg.gd" id="3_074og"]
+[ext_resource type="PackedScene" uid="uid://cnwuejf53tyqs" path="res://scenes/battle_manager.tscn" id="2_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://dhwdi8xiesi60" path="res://spritesheets/susie.png" id="4_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://bh40jx7natsxn" path="res://battle stuff/tp bar/tp_bar_sprite_bg.png" id="8_1u8w0"]
-[ext_resource type="Shader" uid="uid://b8tu3lrsnd1ny" path="res://battle stuff/tp bar/tp_bar_fill.gdshader" id="9_0odxb"]
 [ext_resource type="Texture2D" uid="uid://b5x6wx85omrgf" path="res://spritesheets/ralsei.png" id="9_kek77"]
-[ext_resource type="Texture2D" uid="uid://c0aex5gvjaq03" path="res://battle stuff/tp bar/tp_bar_sprite_mask.png" id="10_lswn8"]
 [ext_resource type="PackedScene" uid="uid://0yk4fa3g3ch8" path="res://textbox/textbox.tscn" id="11_0odxb"]
-[ext_resource type="Texture2D" uid="uid://dftojhsca6i52" path="res://battle stuff/tp bar/tp_icon.png" id="11_a6jrf"]
 [ext_resource type="AudioStream" uid="uid://bknhgmlh4q0y" path="res://music/battle.ogg" id="17_ryguw"]
-[ext_resource type="PackedScene" uid="uid://cx1bnqf06uifo" path="res://battle stuff/soul.tscn" id="19_cegan"]
-[ext_resource type="PackedScene" uid="uid://b72ye1wvvh1vm" path="res://battle stuff/battle_box.tscn" id="20_82xsv"]
 [ext_resource type="Texture2D" uid="uid://hqodey4tnmo1" path="res://battle stuff/battle sprites/susie/idle.png" id="22_d13ii"]
 [ext_resource type="Texture2D" uid="uid://coy7cp0lbgxlb" path="res://battle stuff/battle sprites/susie/attack.png" id="23_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://yu71p0dugk4f" path="res://battle stuff/battle sprites/susie/defend.png" id="24_0odxb"]
@@ -25,76 +17,18 @@
 [ext_resource type="Texture2D" uid="uid://ckekb36repdxn" path="res://battle stuff/battle sprites/susie/act.png" id="25_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://blaoa7xmoans2" path="res://battle stuff/battle sprites/susie/end.png" id="26_seu75"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
-resource_local_to_scene = true
-shader = ExtResource("9_0odxb")
-shader_parameter/base_color = Color(1, 0.5294118, 0, 1)
-shader_parameter/max_color = Color(1, 1, 0, 1)
-shader_parameter/change_color = Color(1, 1, 1, 1)
-shader_parameter/foam_amount = 1.0
-shader_parameter/fill = 1.0
-
-[sub_resource type="TileSet" id="TileSet_ycdy4"]
-
 [node name="Node2D" type="Node2D" unique_id=257948741]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_ycdy4")
 
-[node name="BattleManager" type="Node2D" parent="." unique_id=2076857307]
-script = ExtResource("2_1u8w0")
-
-[node name="Attack" type="Timer" parent="BattleManager" unique_id=1447743695]
-wait_time = 10.0
-one_shot = true
-
-[node name="BattleBox" parent="BattleManager" unique_id=141355792 instance=ExtResource("20_82xsv")]
-visible = false
-scale = Vector2(0.25, 0.25)
-
-[node name="Soul" parent="BattleManager" unique_id=1827781103 instance=ExtResource("19_cegan")]
-visible = false
-scale = Vector2(0.5, 0.5)
-
-[node name="BattleBG" type="Sprite2D" parent="BattleManager" unique_id=203462002]
-visible = false
-modulate = Color(1, 1, 1, 0)
-z_index = -4095
-texture = ExtResource("2_yaehf")
-script = ExtResource("3_074og")
-
-[node name="BattleBG2" type="Sprite2D" parent="BattleManager/BattleBG" unique_id=1874303696]
-z_index = -4096
-texture = ExtResource("2_yaehf")
-
-[node name="TPBar" type="Sprite2D" parent="BattleManager" unique_id=2030197568]
-visible = false
-position = Vector2(-188, -50)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_1u8w0")
-
-[node name="TpFill" type="Sprite2D" parent="BattleManager/TPBar" unique_id=1145754146]
-material = SubResource("ShaderMaterial_d13ii")
-texture = ExtResource("10_lswn8")
-
-[node name="TpIcon" type="Sprite2D" parent="BattleManager/TPBar" unique_id=1103068424]
-position = Vector2(-32, -46)
-scale = Vector2(2, 2)
-texture = ExtResource("11_a6jrf")
-
-[node name="Background" type="TileMapLayer" parent="." unique_id=1719510897]
-z_index = -4096
-tile_set = SubResource("TileSet_ycdy4")
+[node name="BattleManager" parent="." unique_id=250961639 instance=ExtResource("2_jbj1t")]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1688255705]
 zoom = Vector2(3, 3)
 
 [node name="Textbox" parent="Camera" unique_id=172986465 instance=ExtResource("11_0odxb")]
 position = Vector2(-2, 68)
-
-[node name="Music" type="AudioStreamPlayer" parent="Camera" unique_id=1277514281]
-stream = ExtResource("17_ryguw")
-volume_db = -80.0
 
 [node name="SCARF" parent="." unique_id=892831455 node_paths=PackedStringArray("leader") instance=ExtResource("2_0xm2m")]
 leader = NodePath("../AX")
@@ -135,14 +69,13 @@ frameoff = Vector2i(4, 0)
 
 [node name="SoundEffects" type="AudioStreamPlayer" parent="." unique_id=908351972]
 
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1277514281]
+stream = ExtResource("17_ryguw")
+volume_db = -80.0
+
 [node name="Timer" type="Timer" parent="." unique_id=306785960]
 one_shot = true
 
 [connection signal="battle" from="." to="." method="_on_battle"]
-[connection signal="battle" from="." to="BattleManager" method="_on_node_2d_battle"]
 [connection signal="battle" from="." to="SWORD" method="_on_battle_triggered"]
-[connection signal="attacking" from="BattleManager" to="BattleManager" method="_on_attacking"]
-[connection signal="battleStart" from="BattleManager" to="BattleManager" method="_on_battle_start"]
-[connection signal="timeout" from="BattleManager/Attack" to="BattleManager" method="_on_attack_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer" to="BattleManager" method="_on_timer_timeout"]
