@@ -97,7 +97,7 @@ func _process(_delta: float) -> void:
 func finish_textbox() -> void:
 	for i in remainMsg.length():
 		addLetter()
-		if remainMsg == "":
+		if remainMsg == "" or remainMsg == "/":
 			break
 
 func get_textbox_sub(id:int=0):

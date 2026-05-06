@@ -1,4 +1,4 @@
-extends ColorRect
+extends CanvasLayer
 
 # basic stuff
 var canMove: bool = true
@@ -9,10 +9,33 @@ signal battle
 
 # event stuff
 var cmndStr: String = ""
-var EVENTS = JSON.parse_string(FileAccess.open("res://events.json",FileAccess.READ).get_as_text())
+var EVENTS : Array = JSON.parse_string(FileAccess.open("res://events.json",FileAccess.READ).get_as_text())
+
+# room transitions
+var fadeAmnt : float = 0.0
+var a = ColorRect.new()
+var fadeIn : bool = false
+var room : String = "res://scenes/main.tscn"
+
+func _ready() -> void:
+	add_child(a)
+	a.color = Color(0,0,0,0.0)
+	a.size.x = 1400
+	a.size.y = 1400
+	a.z_index = 4096
 
 func _process(delta: float) -> void:
 	frame += 60 * delta
+	a.color.a = fadeAmnt
+	fadeAmnt = clamp(fadeAmnt, 0, 1)
+	if fadeIn:
+		fadeAmnt += 0.05 * delta * 60
+	else:
+		fadeAmnt -= 0.05 * delta * 60
+	if fadeAmnt >= 1.0:
+		get_tree().change_scene_to_file(room)
+		fadeIn = false
+		canMove = true
 
 func callEvent(event=0) -> void:
 	if event is int:
@@ -36,6 +59,9 @@ func handleCommand(command:String="EM"):
 		hide_textbox.emit()
 	if command == "BTL":
 		battle.emit()
+	if command.begins_with("RM("):
+		change_scene("res://scenes/" + command.get_slice("(",1).replace(")",""))
 
 func change_scene(path:String):
-	pass
+	fadeIn = true
+	room = path

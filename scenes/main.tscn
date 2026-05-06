@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bvhhm1xmui6r6"]
 
-[ext_resource type="PackedScene" uid="uid://c23hbximofv3t" path="res://kris.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c23hbximofv3t" path="res://scenes/kris.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b3nr7e7fpbjwr" path="res://main.gd" id="1_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://dci65i4dx1nmg" path="res://partymem.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dci65i4dx1nmg" path="res://scenes/partymem.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bffji0bfm0vr8" path="res://battle stuff/battle_manager.gd" id="2_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://ccawjjop2md8q" path="res://battle bg/BBS_1.png" id="2_yaehf"]
 [ext_resource type="Script" uid="uid://cw1ibpaqy5k4e" path="res://battle_bg.gd" id="3_074og"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cne02v4rialq" path="res://spritesheets/sans.png" id="26_lswn8"]
 [ext_resource type="Texture2D" uid="uid://blaoa7xmoans2" path="res://battle stuff/battle sprites/susie/end.png" id="26_seu75"]
 [ext_resource type="Script" uid="uid://d04h2gje84myy" path="res://new_room_trigger.gd" id="27_a6jrf"]
-[ext_resource type="PackedScene" uid="uid://b2p0dwvtb05fo" path="res://npc.tscn" id="31_seu75"]
+[ext_resource type="PackedScene" uid="uid://b2p0dwvtb05fo" path="res://scenes/npc.tscn" id="31_seu75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
 resource_local_to_scene = true
@@ -152,7 +152,10 @@ texture = ExtResource("26_lswn8")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=504727520]
 position = Vector2(118, 0)
+collision_layer = 0
+collision_mask = 4294967295
 script = ExtResource("27_a6jrf")
+event = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=874026546]
 shape = SubResource("RectangleShape2D_lswn8")
