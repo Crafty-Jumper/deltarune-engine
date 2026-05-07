@@ -29,6 +29,7 @@ var choice: int = 0
 @onready var _2: RichTextLabel = $"Choices/2"
 @onready var _3: RichTextLabel = $"Choices/3"
 @onready var _4: RichTextLabel = $"Choices/4"
+@onready var gif_player: GIFPlayer = $GIFPlayer
 var writingChoice: int = 0
 var choiceName: String = ""
 
@@ -37,6 +38,8 @@ func _ready() -> void:
 	Global.hide_textbox.connect(kill_textbox)
 
 func _process(_delta: float) -> void:
+	rich_text_label.update_image("tennaSpeak",RichTextLabel.UPDATE_TEXTURE,gif_player.gif.get_current_texture())
+	
 	if !visible:
 		return
 		
@@ -248,7 +251,8 @@ func addLetter(label:RichTextLabel=rich_text_label):
 		var imagename: String = remainMsg.get_slice(",",0)
 		remainMsg = remainMsg.replace(imagename,"").replace(",","")
 		if imagename.ends_with(".gif"):
-			label.add_image(GIFTexture.load_from_file("res://textbox/images/"+imagename),0,30)
+			gif_player.gif = GIFTexture.load_from_file("res://textbox/images/"+imagename)
+			label.add_image(gif_player.gif.get_current_texture(),0,30,Color(1,1,1),5,Rect2(0,0,0,0),"tennaSpeak")
 		else:
 			label.add_image(load("res://textbox/images/"+imagename),0,30)
 		for i in 10:

@@ -1,11 +1,10 @@
-[gd_scene format=3 uid="uid://0yk4fa3g3ch8"]
+[gd_scene format=4 uid="uid://0yk4fa3g3ch8"]
 
 [ext_resource type="Texture2D" uid="uid://bufjnv22t3mij" path="res://textbox/lightworld.png" id="1_md3dt"]
 [ext_resource type="Script" uid="uid://dahx40nysg6ua" path="res://textbox.gd" id="2_2qfjf"]
 [ext_resource type="FontFile" uid="uid://cjloxrsvbqe82" path="res://textbox/default.ttf" id="3_1ylbh"]
 [ext_resource type="Script" uid="uid://g6wuv3vbgf4i" path="res://darkworldtext.gd" id="4_knung"]
 [ext_resource type="Script" uid="uid://b7n0kl2nrcunk" path="res://comicsans.gd" id="5_pkgsm"]
-[ext_resource type="AudioStream" uid="uid://c63xgodpgmji2" path="res://textbox/sounds/snd_txtsus.wav" id="6_nfm76"]
 [ext_resource type="Texture2D" uid="uid://b46loo7yumfoq" path="res://textbox/ralsei/0.png" id="7_e6tbd"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_4c57u"]
@@ -16,15 +15,20 @@ metadata/_custom_type_script = "uid://g6wuv3vbgf4i"
 script = ExtResource("5_pkgsm")
 metadata/_custom_type_script = "uid://b7n0kl2nrcunk"
 
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_ygom0"]
+data = PackedByteArray("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")
+format = 3
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kek77"]
 streams_count = 10
-stream_0/stream = ExtResource("6_nfm76")
+stream_0/stream = SubResource("AudioStreamWAV_ygom0")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vw27"]
 load_path = "res://.godot/imported/0.png-10b240e1556ac378b47fbaad9aaa484c.ctex"
 
+[sub_resource type="GIFTexture" id="GIFTexture_ygom0"]
+
 [node name="Textbox" type="Sprite2D" unique_id=172986465]
-visible = false
 z_index = 4096
 texture_filter = 1
 texture = ExtResource("1_md3dt")
@@ -42,9 +46,11 @@ theme_override_constants/paragraph_separation = 1
 theme_override_fonts/normal_font = ExtResource("3_1ylbh")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[comicsans]text[/comicsans]"
+text = "text"
+fit_content = true
 scroll_active = false
 custom_effects = [SubResource("RichTextEffect_4c57u"), SubResource("RichTextEffect_jq2sk")]
+progress_bar_delay = -1
 
 [node name="Choices" type="Node2D" parent="." unique_id=1999424562]
 visible = false
@@ -136,3 +142,9 @@ offset_bottom = 26.0
 theme_override_fonts/normal_font = ExtResource("3_1ylbh")
 theme_override_font_sizes/normal_font_size = 16
 text = "Th-Thanks Susie!"
+
+[node name="GIFPlayer" type="GIFPlayer" parent="." unique_id=46887277]
+gif = SubResource("GIFTexture_ygom0")
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
