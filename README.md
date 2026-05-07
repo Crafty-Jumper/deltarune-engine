@@ -8,11 +8,11 @@ idk, why not?
 - Functioning Text Boxes
 - Following Party Members
 - A Half Functioning Battle System
+- Choices (That don't matter yet)
+- Event System
+- NPC
 
 # TBA Features
-- NPCs
-- Choices (~~that don't matter~~)
-- Event System
 - Battle UI
 - Enemies
 - Attack Patterns

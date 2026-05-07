@@ -19,7 +19,6 @@ position = Vector2(0, -8)
 texture = ExtResource("2_rvgui")
 hframes = 8
 vframes = 4
-frame = 20
 
 [node name="BattleSprite" type="Sprite2D" parent="." unique_id=1470275802]
 visible = false
