@@ -36,6 +36,7 @@ var choiceName: String = ""
 func _ready() -> void:
 	Global.textbox.connect(get_textbox)
 	Global.hide_textbox.connect(kill_textbox)
+	gif_player.gif = GIFTexture.load_from_file("res://textbox/images/physicalchallenge.gif")
 
 func _process(_delta: float) -> void:
 	rich_text_label.update_image("tennaSpeak",RichTextLabel.UPDATE_TEXTURE,gif_player.gif.get_current_texture())
