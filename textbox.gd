@@ -263,6 +263,10 @@ func addLetter(label:RichTextLabel=rich_text_label):
 		remainMsg = remainMsg.replace(remainMsg.get_slice("}",0),"").replace("}","")
 		audio_stream_player.play()
 		return
+	if character == "%":
+		msgIdx += 1
+		get_textbox(textboxId)
+		return
 	label.append_text(character)
 	remainMsg = remainMsg.erase(0)
 	if audibleLetters.has(character):

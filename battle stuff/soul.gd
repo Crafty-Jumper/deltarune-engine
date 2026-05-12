@@ -73,7 +73,11 @@ func update_blue() -> void:
 
 func update_green(eightway:bool) -> void:
 	velocity = Vector2.ZERO
-	var tween = create_tween()
+	var tween
+	if !get_parent().get_parent().battling:
+		return
+	else:
+		tween = create_tween()
 	green_shield.show()
 	if direction.x == 1:
 		if green_shield.rotation_degrees == -180:

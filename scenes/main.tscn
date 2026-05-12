@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dhwdi8xiesi60" path="res://spritesheets/susie.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://b5x6wx85omrgf" path="res://spritesheets/ralsei.png" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://0yk4fa3g3ch8" path="res://textbox/textbox.tscn" id="11_0odxb"]
+[ext_resource type="PackedScene" uid="uid://bpadtspm20yuq" path="res://scenes/trigger.tscn" id="17_muem4"]
 [ext_resource type="AudioStream" uid="uid://bknhgmlh4q0y" path="res://music/battle.ogg" id="17_ryguw"]
 [ext_resource type="Texture2D" uid="uid://hqodey4tnmo1" path="res://battle stuff/battle sprites/susie/idle.png" id="22_d13ii"]
 [ext_resource type="Texture2D" uid="uid://coy7cp0lbgxlb" path="res://battle stuff/battle sprites/susie/attack.png" id="23_1u8w0"]
@@ -76,6 +77,10 @@ volume_db = -80.0
 
 [node name="Timer" type="Timer" parent="." unique_id=306785960]
 one_shot = true
+
+[node name="Area2D" parent="." unique_id=342042819 instance=ExtResource("17_muem4")]
+position = Vector2(35, -4)
+mode = 1
 
 [connection signal="battle" from="." to="." method="_on_battle"]
 [connection signal="battle" from="." to="SWORD" method="_on_battle_triggered"]
